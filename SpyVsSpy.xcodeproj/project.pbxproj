@@ -13,6 +13,9 @@
 		9F26ACBE1F716ED200327E45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACBC1F716ED200327E45 /* Main.storyboard */; };
 		9F26ACC01F716ED200327E45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACBF1F716ED200327E45 /* Assets.xcassets */; };
 		9F26ACC31F716ED200327E45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACC11F716ED200327E45 /* LaunchScreen.storyboard */; };
+		FA583D411F783A6800F344CE /* ViewGamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D401F783A6800F344CE /* ViewGamesTableViewCell.swift */; };
+		FA583D431F783AB600F344CE /* ViewGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D421F783AB600F344CE /* ViewGamesViewController.swift */; };
+		FA583D451F784C9A00F344CE /* GameDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D441F784C9A00F344CE /* GameDetailsViewController.swift */; };
 		FAC19F2D1F75F9DB007A8600 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,9 @@
 		9F26ACC21F716ED200327E45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F26ACC41F716ED200327E45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7951B9E9A5D0462EBF31922 /* Pods-SpyVsSpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyVsSpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpyVsSpy/Pods-SpyVsSpy.release.xcconfig"; sourceTree = "<group>"; };
+		FA583D401F783A6800F344CE /* ViewGamesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGamesTableViewCell.swift; sourceTree = "<group>"; };
+		FA583D421F783AB600F344CE /* ViewGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGamesViewController.swift; sourceTree = "<group>"; };
+		FA583D441F784C9A00F344CE /* GameDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsViewController.swift; sourceTree = "<group>"; };
 		FAAEF8EC1F75F44800537F84 /* SpyVsSpy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpyVsSpy.entitlements; sourceTree = "<group>"; };
 		FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +83,9 @@
 				9F26ACB81F716ED200327E45 /* AppDelegate.swift */,
 				9F26ACBA1F716ED200327E45 /* ViewController.swift */,
 				9F26ACBC1F716ED200327E45 /* Main.storyboard */,
+				FA583D441F784C9A00F344CE /* GameDetailsViewController.swift */,
+				FA583D401F783A6800F344CE /* ViewGamesTableViewCell.swift */,
+				FA583D421F783AB600F344CE /* ViewGamesViewController.swift */,
 				9F26ACBF1F716ED200327E45 /* Assets.xcassets */,
 				9F26ACC11F716ED200327E45 /* LaunchScreen.storyboard */,
 				FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */,
@@ -231,8 +240,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA583D411F783A6800F344CE /* ViewGamesTableViewCell.swift in Sources */,
 				9F26ACBB1F716ED200327E45 /* ViewController.swift in Sources */,
+				FA583D451F784C9A00F344CE /* GameDetailsViewController.swift in Sources */,
 				9F26ACB91F716ED200327E45 /* AppDelegate.swift in Sources */,
+				FA583D431F783AB600F344CE /* ViewGamesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
