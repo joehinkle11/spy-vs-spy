@@ -19,7 +19,7 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        joinButton?.layer.cornerRadius = 5
         // Set up views if editing an existing game.
         if let game = game {
             navItem?.title = game
