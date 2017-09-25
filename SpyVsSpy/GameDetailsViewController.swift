@@ -13,7 +13,7 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var joinButton: UIButton!
-    var friendsList = ["hey", "bye"]
+    var friendsList = ["hey", "bye", "Mr. Nacho", "Mrs. Flour"]
     var game: String?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +31,17 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath)
-//        cell.contentView.
-        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath) as? ProfileCollectionViewCell
+        cell?.profileNameLabel?.text = friendsList[indexPath.row]
+        let image : UIImage = UIImage(named:"apptitle")!
+        
+        cell?.profileImage?.image = image
+        cell?.profileImage?.layer.borderWidth = 1.0
+        cell?.profileImage?.layer.borderColor = UIColor.lightGray.cgColor
+        cell?.profileImage?.layer.cornerRadius = (cell?.profileImage?.frame.size.width)! / 2;
+        print("Corner Radius: ",  cell?.profileImage?.layer.cornerRadius)
+        cell?.profileImage?.layer.masksToBounds = true
+        return cell!
     }
 
     override func didReceiveMemoryWarning() {
