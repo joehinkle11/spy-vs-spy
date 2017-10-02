@@ -66,9 +66,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }()
     
     func setupCameraSession() {
-        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo) as AVCaptureDevice
         
         do {
+            let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo) as AVCaptureDevice
+
             let deviceInput = try AVCaptureDeviceInput(device: captureDevice)
             
             cameraSession.beginConfiguration()
