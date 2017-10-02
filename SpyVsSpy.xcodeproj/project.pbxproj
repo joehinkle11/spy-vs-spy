@@ -141,7 +141,7 @@
 				TargetAttributes = {
 					9F26ACB41F716ED200327E45 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = B26A36AMBV;
+						DevelopmentTeam = B3GJXRTH64;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -377,7 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SpyVsSpy/SpyVsSpy.entitlements;
-				DEVELOPMENT_TEAM = B26A36AMBV;
+				DEVELOPMENT_TEAM = B3GJXRTH64;
 				INFOPLIST_FILE = SpyVsSpy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.impact-studios.SpyVsSpy";
@@ -391,7 +391,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SpyVsSpy/SpyVsSpy.entitlements;
-				DEVELOPMENT_TEAM = B26A36AMBV;
+				DEVELOPMENT_TEAM = B3GJXRTH64;
 				INFOPLIST_FILE = SpyVsSpy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.impact-studios.SpyVsSpy";
