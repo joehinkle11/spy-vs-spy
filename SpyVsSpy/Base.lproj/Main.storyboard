@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -189,6 +189,7 @@
                                         <connections>
                                             <outlet property="profileImage" destination="23e-uz-Sbv" id="gd0-hr-r0C"/>
                                             <outlet property="profileNameLabel" destination="N6O-3s-Jcn" id="Ifc-Cv-8yi"/>
+                                            <segue destination="KmT-ih-zQy" kind="show" id="9ak-Rg-A1M"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -351,7 +352,7 @@
                         <viewControllerLayoutGuide type="bottom" id="lJr-us-8y9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CSb-AT-U1g">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -398,6 +399,31 @@
             </objects>
             <point key="canvasLocation" x="5033" y="-196"/>
         </scene>
+        <!--User Profile-->
+        <scene sceneID="aJU-wr-twJ">
+            <objects>
+                <viewController id="KmT-ih-zQy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nz6-p8-N6F"/>
+                        <viewControllerLayoutGuide type="bottom" id="O9c-wU-0Li"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PgT-FN-P0T">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bow-IE-aYJ">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="User Profile" id="31z-zD-XCf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Idj-KG-PpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2837" y="1094"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ROu-Sq-4YI">
             <objects>
@@ -430,7 +456,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zr5-DV-45L">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zr5-DV-45L">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
@@ -494,6 +520,6 @@
         <image name="lazergun" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OTv-9a-Q3M"/>
+        <segue reference="Pcd-kp-464"/>
     </inferredMetricsTieBreakers>
 </document>
