@@ -13,6 +13,7 @@
 		9F26ACBE1F716ED200327E45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACBC1F716ED200327E45 /* Main.storyboard */; };
 		9F26ACC01F716ED200327E45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACBF1F716ED200327E45 /* Assets.xcassets */; };
 		9F26ACC31F716ED200327E45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACC11F716ED200327E45 /* LaunchScreen.storyboard */; };
+		9F385C001F82B12300797DD2 /* SpecialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F385BFF1F82B12300797DD2 /* SpecialViewController.swift */; };
 		FA4F21BF1F7AA33F00577F9B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F21BE1F7AA33F00577F9B /* CameraViewController.swift */; };
 		FA583D411F783A6800F344CE /* ViewGamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D401F783A6800F344CE /* ViewGamesTableViewCell.swift */; };
 		FA583D431F783AB600F344CE /* ViewGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D421F783AB600F344CE /* ViewGamesViewController.swift */; };
@@ -31,6 +32,7 @@
 		9F26ACBF1F716ED200327E45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F26ACC21F716ED200327E45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F26ACC41F716ED200327E45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F385BFF1F82B12300797DD2 /* SpecialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialViewController.swift; sourceTree = "<group>"; };
 		FA4F21BE1F7AA33F00577F9B /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		FA583D401F783A6800F344CE /* ViewGamesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGamesTableViewCell.swift; sourceTree = "<group>"; };
 		FA583D421F783AB600F344CE /* ViewGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGamesViewController.swift; sourceTree = "<group>"; };
@@ -85,15 +87,16 @@
 				9F26ACB81F716ED200327E45 /* AppDelegate.swift */,
 				9F26ACBA1F716ED200327E45 /* ViewController.swift */,
 				9F26ACBC1F716ED200327E45 /* Main.storyboard */,
+				9F385BFF1F82B12300797DD2 /* SpecialViewController.swift */,
 				FA583D461F7889D200F344CE /* ProfileCollectionViewCell.swift */,
 				FA583D441F784C9A00F344CE /* GameDetailsViewController.swift */,
 				FA583D401F783A6800F344CE /* ViewGamesTableViewCell.swift */,
 				FA583D421F783AB600F344CE /* ViewGamesViewController.swift */,
+				FA4F21BE1F7AA33F00577F9B /* CameraViewController.swift */,
 				9F26ACBF1F716ED200327E45 /* Assets.xcassets */,
 				9F26ACC11F716ED200327E45 /* LaunchScreen.storyboard */,
 				FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */,
 				9F26ACC41F716ED200327E45 /* Info.plist */,
-				FA4F21BE1F7AA33F00577F9B /* CameraViewController.swift */,
 			);
 			path = SpyVsSpy;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				9F26ACB91F716ED200327E45 /* AppDelegate.swift in Sources */,
 				FA4F21BF1F7AA33F00577F9B /* CameraViewController.swift in Sources */,
 				FA583D471F7889D200F344CE /* ProfileCollectionViewCell.swift in Sources */,
+				9F385C001F82B12300797DD2 /* SpecialViewController.swift in Sources */,
 				FA583D431F783AB600F344CE /* ViewGamesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
