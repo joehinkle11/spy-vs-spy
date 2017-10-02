@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina3_5" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jk7-x9-tFe">
@@ -70,11 +70,11 @@
                         <viewControllerLayoutGuide type="bottom" id="jTR-q2-4SM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mn7-tP-aj6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c5F-Bf-bYj">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ViewGamesTableViewCell" id="OnJ-n2-u8g" customClass="ViewGamesTableViewCell" customModule="SpyVsSpy" customModuleProvider="target">
@@ -152,7 +152,7 @@
                         <viewControllerLayoutGuide type="bottom" id="72a-ng-Vgh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="nB5-FF-pCi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mzt-SL-gGd">
@@ -197,7 +197,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvq-0y-GbL">
-                                <rect key="frame" x="20" y="428" width="280" height="32"/>
+                                <rect key="frame" x="20" y="516" width="280" height="32"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -236,7 +236,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ow9-H1-0zZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YUX-D2-enR">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSe-Sj-8NA">
@@ -246,7 +246,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Lazer Gun"/>
                                 <connections>
-                                    <segue destination="WfR-wR-wGc" kind="popoverPresentation" popoverAnchorView="nSe-Sj-8NA" id="nWE-EG-sLz">
+                                    <segue destination="cXW-UC-oXN" kind="popoverPresentation" popoverAnchorView="nSe-Sj-8NA" id="0M2-2c-Fcq">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -286,7 +286,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Eam-Zg-xf9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KdS-5n-sXv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UfP-xg-wvt">
@@ -304,7 +304,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ig-9j-8XC">
-                                <rect key="frame" x="88" y="430" width="212" height="30"/>
+                                <rect key="frame" x="88" y="518" width="212" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="212" id="sRf-p8-4Jc"/>
@@ -322,9 +322,6 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="dfv-Lf-ybm" kind="show" animates="NO" id="Tem-aP-XiB"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -343,7 +340,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSD-Jh-PL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6112.5" y="555"/>
+            <point key="canvasLocation" x="7613" y="558"/>
+        </scene>
+        <!--Gun View Controller-->
+        <scene sceneID="pPW-6h-74X">
+            <objects>
+                <viewController id="cXW-UC-oXN" customClass="GunViewController" customModule="SpyVsSpy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QbM-lg-bHS"/>
+                        <viewControllerLayoutGuide type="bottom" id="lJr-us-8y9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CSb-AT-U1g">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oh2-5U-tuo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6292.5" y="557.5"/>
         </scene>
         <!--Messaging-->
         <scene sceneID="iBc-aP-ApZ">
@@ -354,7 +369,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bfg-To-6YO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Zdg-Op-JN6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -373,7 +388,7 @@
                         <viewControllerLayoutGuide type="bottom" id="AV7-6l-y05"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zyZ-k8-ZQh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -412,7 +427,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hqN-BU-WNi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="F3q-TW-guQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zr5-DV-45L">
@@ -480,6 +495,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="OTv-9a-Q3M"/>
-        <segue reference="Tem-aP-XiB"/>
     </inferredMetricsTieBreakers>
 </document>

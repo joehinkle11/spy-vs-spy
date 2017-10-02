@@ -32,12 +32,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewdidload1")
         setupCameraSession()
-        
+        print("viewdidload2")
         var fileName = "mysavefile.mp4";
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 //        documentsURL.pathcompon
         filePath = documentsURL.appendingPathComponent(fileName)
+        
+        print("viewdidload3")
         
         
     }
@@ -97,7 +100,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             
         }
         catch let error as NSError {
+            print("here1")
             NSLog("\(error), \(error.localizedDescription)")
+            print("here2")
         }
     }
     
