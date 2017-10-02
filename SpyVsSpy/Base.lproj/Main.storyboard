@@ -197,20 +197,23 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvq-0y-GbL">
-                                <rect key="frame" x="10" y="428" width="300" height="32"/>
+                                <rect key="frame" x="20" y="428" width="280" height="32"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Join">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="WfR-wR-wGc" kind="show" id="Ue0-HS-LlM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qvq-0y-GbL" firstAttribute="leading" secondItem="nB5-FF-pCi" secondAttribute="leading" constant="10" id="Dht-zM-u9g"/>
-                            <constraint firstAttribute="trailing" secondItem="qvq-0y-GbL" secondAttribute="trailing" constant="10" id="akX-jz-7fh"/>
-                            <constraint firstItem="72a-ng-Vgh" firstAttribute="top" secondItem="qvq-0y-GbL" secondAttribute="bottom" constant="20" id="vdJ-hP-l9K"/>
+                            <constraint firstItem="72a-ng-Vgh" firstAttribute="top" secondItem="qvq-0y-GbL" secondAttribute="bottom" constant="20" id="0tk-ug-Xor"/>
+                            <constraint firstItem="qvq-0y-GbL" firstAttribute="leading" secondItem="nB5-FF-pCi" secondAttribute="leading" constant="20" id="LH5-Wf-7bb"/>
+                            <constraint firstAttribute="trailing" secondItem="qvq-0y-GbL" secondAttribute="trailing" constant="20" id="PsI-HC-fP4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Game Details" id="6iJ-bA-b6N"/>
@@ -223,6 +226,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dF1-UK-mNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2853.75" y="45"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="IDw-Yt-x7b">
+            <objects>
+                <viewController id="WfR-wR-wGc" customClass="CameraViewController" customModule="SpyVsSpy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eDQ-qF-VtS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eam-Zg-xf9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KdS-5n-sXv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUD-9l-QA4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="414"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ig-9j-8XC">
+                                <rect key="frame" x="20" y="430" width="280" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Snipe">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapTakePhoto:" destination="WfR-wR-wGc" eventType="touchUpInside" id="2a1-VV-hTW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Eam-Zg-xf9" firstAttribute="top" secondItem="MUD-9l-QA4" secondAttribute="bottom" constant="66" id="1Py-yQ-fpD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4ig-9j-8XC" secondAttribute="trailing" constant="4" id="6Cj-io-Jdk"/>
+                            <constraint firstItem="4ig-9j-8XC" firstAttribute="leading" secondItem="KdS-5n-sXv" secondAttribute="leadingMargin" constant="4" id="6G1-y9-k5f"/>
+                            <constraint firstItem="MUD-9l-QA4" firstAttribute="leading" secondItem="KdS-5n-sXv" secondAttribute="leading" id="6cF-65-7lr"/>
+                            <constraint firstItem="Eam-Zg-xf9" firstAttribute="top" secondItem="4ig-9j-8XC" secondAttribute="bottom" constant="20" id="Myx-pN-fbk"/>
+                            <constraint firstItem="MUD-9l-QA4" firstAttribute="top" secondItem="KdS-5n-sXv" secondAttribute="top" id="V8U-UI-4GC"/>
+                            <constraint firstAttribute="trailing" secondItem="MUD-9l-QA4" secondAttribute="trailing" id="zk5-Mc-zjc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="previewView" destination="MUD-9l-QA4" id="khV-QD-q3g"/>
+                        <outlet property="recordButton" destination="4ig-9j-8XC" id="65e-oe-Vu7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VSD-Jh-PL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3652.5" y="41.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vCo-CI-p9O">
