@@ -14,7 +14,6 @@
 		9F26ACC01F716ED200327E45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACBF1F716ED200327E45 /* Assets.xcassets */; };
 		9F26ACC31F716ED200327E45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACC11F716ED200327E45 /* LaunchScreen.storyboard */; };
 		9F385C001F82B12300797DD2 /* SpecialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F385BFF1F82B12300797DD2 /* SpecialViewController.swift */; };
-		9FD8DE9B1F82C2F50006EEFD /* GunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD8DE9A1F82C2F50006EEFD /* GunViewController.swift */; };
 		FA4F21BF1F7AA33F00577F9B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F21BE1F7AA33F00577F9B /* CameraViewController.swift */; };
 		FA583D411F783A6800F344CE /* ViewGamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D401F783A6800F344CE /* ViewGamesTableViewCell.swift */; };
 		FA583D431F783AB600F344CE /* ViewGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D421F783AB600F344CE /* ViewGamesViewController.swift */; };
@@ -34,7 +33,6 @@
 		9F26ACC21F716ED200327E45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F26ACC41F716ED200327E45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F385BFF1F82B12300797DD2 /* SpecialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialViewController.swift; sourceTree = "<group>"; };
-		9FD8DE9A1F82C2F50006EEFD /* GunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GunViewController.swift; sourceTree = "<group>"; };
 		FA4F21BE1F7AA33F00577F9B /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		FA583D401F783A6800F344CE /* ViewGamesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGamesTableViewCell.swift; sourceTree = "<group>"; };
 		FA583D421F783AB600F344CE /* ViewGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGamesViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				FAAEF8EC1F75F44800537F84 /* SpyVsSpy.entitlements */,
 				9F26ACB81F716ED200327E45 /* AppDelegate.swift */,
 				9F26ACBA1F716ED200327E45 /* ViewController.swift */,
-				9FD8DE9A1F82C2F50006EEFD /* GunViewController.swift */,
 				9F26ACBC1F716ED200327E45 /* Main.storyboard */,
 				9F385BFF1F82B12300797DD2 /* SpecialViewController.swift */,
 				FA583D461F7889D200F344CE /* ProfileCollectionViewCell.swift */,
@@ -252,7 +249,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FD8DE9B1F82C2F50006EEFD /* GunViewController.swift in Sources */,
 				FA583D411F783A6800F344CE /* ViewGamesTableViewCell.swift in Sources */,
 				9F26ACBB1F716ED200327E45 /* ViewController.swift in Sources */,
 				FA583D451F784C9A00F344CE /* GameDetailsViewController.swift in Sources */,
