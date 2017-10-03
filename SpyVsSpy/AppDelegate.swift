@@ -8,18 +8,54 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-//        FIRApp.configure()
+        
+        // setup client ID
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        
 
+        return true
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        if error != nil {
+            print("Failed to log into Google")
+            return
+        }
+        
+        guard let idToken = user.authentication.idToken else {return}
+        guard let accessToken = user.authentication.accessToken else {return}
+        
+        let credentials = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                        accessToken: accessToken)
+        Auth.auth().signIn(with: credentials) { (user, error) in
+            if error != nil {
+                print("Failed to create a firebase user with Google account")
+                return
+            }
+            // User is signed in
+            print("Successfully logged into user with firebase with Google!")
+        }
+    }
+
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        print("the user signed out!")
+    }
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        // let the mini safari view close automatically by giving control to the google sign in
+        GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,annotation: [:])
         return true
     }
 

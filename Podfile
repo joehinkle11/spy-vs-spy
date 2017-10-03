@@ -8,5 +8,7 @@ target 'SpyVsSpy' do
   # Pods for SpyVsSpy
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
 
 end
