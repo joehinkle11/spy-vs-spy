@@ -35,6 +35,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow Camera usage to catch the Spy!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Required to receive location of Hacks</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Record sound for videos</string>
 	<key>UILaunchStoryboardName</key>
