@@ -23,6 +23,7 @@
 		FA583D431F783AB600F344CE /* ViewGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D421F783AB600F344CE /* ViewGamesViewController.swift */; };
 		FA583D451F784C9A00F344CE /* GameDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D441F784C9A00F344CE /* GameDetailsViewController.swift */; };
 		FA583D471F7889D200F344CE /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D461F7889D200F344CE /* ProfileCollectionViewCell.swift */; };
+		FA7712EE1F8FDD4500571BE5 /* GameStartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7712ED1F8FDD4500571BE5 /* GameStartInfo.swift */; };
 		FAC19F2D1F75F9DB007A8600 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		FA583D421F783AB600F344CE /* ViewGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGamesViewController.swift; sourceTree = "<group>"; };
 		FA583D441F784C9A00F344CE /* GameDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsViewController.swift; sourceTree = "<group>"; };
 		FA583D461F7889D200F344CE /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA7712ED1F8FDD4500571BE5 /* GameStartInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartInfo.swift; sourceTree = "<group>"; };
 		FAAEF8EC1F75F44800537F84 /* SpyVsSpy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpyVsSpy.entitlements; sourceTree = "<group>"; };
 		FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 				FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */,
 				9F26ACC41F716ED200327E45 /* Info.plist */,
 				5F5902E11F8C634B00CB9831 /* StarRatingViewer.swift */,
+				FA7712ED1F8FDD4500571BE5 /* GameStartInfo.swift */,
 			);
 			path = SpyVsSpy;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				9F26ACB91F716ED200327E45 /* AppDelegate.swift in Sources */,
 				5F5902E01F8C4C8900CB9831 /* StarRatingControl.swift in Sources */,
 				FA4F21BF1F7AA33F00577F9B /* CameraViewController.swift in Sources */,
+				FA7712EE1F8FDD4500571BE5 /* GameStartInfo.swift in Sources */,
 				5F5902E21F8C634B00CB9831 /* StarRatingViewer.swift in Sources */,
 				FA583D471F7889D200F344CE /* ProfileCollectionViewCell.swift in Sources */,
 				9F385C001F82B12300797DD2 /* SpecialViewController.swift in Sources */,
