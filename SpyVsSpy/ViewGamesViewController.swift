@@ -8,17 +8,32 @@
 
 import UIKit
 import os.log
+import Firebase
 
 class ViewGamesViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let myGamesList = ["Monday", "Tuesday", "Wednesday"]
+    let gameStarterInfoReference = Database.database().reference(withPath: "Games")
+    var myGamesList: [GameStartInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        // Use Firebase library to configure APIs
+        FirebaseApp.configure()
+        
+        self.gameStarterInfoReference.observe(.value, with: {
+            snapshot in
+            var items: [GameStartInfo] = []
+            for item in snapshot.children {
+                let game = GameModel(snapshot: item as! DataSnapshot)
+                items.append(game.startInfo)
+            }
+            self.myGamesList = items
+            self.tableView.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +55,11 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ViewGamesTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ViewGamesTableViewCell
-        cell?.dayLabel.text = myGamesList[indexPath.row]
+        let date = DateFormatter.stringFromDate(myGamesList[indexPath.row].time)
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        cell?.dayLabel.text = date.
         cell?.timeLabel?.text = "12:30PM"
         cell?.numberOfPlayersJoinedLabel?.text = "8/10"
 
