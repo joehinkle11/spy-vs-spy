@@ -14,7 +14,7 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var joinButton: UIButton!
     var friendsList = ["hey", "bye", "Mr. Nacho", "Mrs. Flour"]
-    var game: String?
+    var game: GameModel?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +22,7 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
         joinButton?.layer.cornerRadius = 5
         // Set up views if editing an existing game.
         if let game = game {
-            navItem?.title = game
+            navItem?.title = game.startInfo.gameName
         }
     }
     

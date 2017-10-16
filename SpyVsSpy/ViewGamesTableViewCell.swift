@@ -10,6 +10,7 @@ import UIKit
 
 class ViewGamesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var gameNameLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var numberOfPlayersJoinedLabel: UILabel!

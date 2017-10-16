@@ -98,6 +98,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dayLabel" destination="M75-Ix-6UC" id="G7k-Xg-TpV"/>
+                                            <outlet property="gameNameLabel" destination="xpx-Ga-nWH" id="rt3-Zd-9SA"/>
                                             <outlet property="numberOfPlayersJoinedLabel" destination="jSe-TZ-mtg" id="xkJ-gN-ncS"/>
                                             <outlet property="timeLabel" destination="sFo-bt-D77" id="diI-XB-dbW"/>
                                             <segue destination="tAh-JS-pb6" kind="push" identifier="showGameDetails" id="Pcd-kp-464"/>
@@ -508,7 +509,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KxU-RO-SA0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="t67-Ow-pUa">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -526,7 +527,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bwF-hN-slv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jjD-LI-Tur">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

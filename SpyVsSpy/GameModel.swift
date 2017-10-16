@@ -2,7 +2,7 @@
 //  GameModel.swift
 //  SpyVsSpy
 //
-//  Created by Macbook on 10/14/17.
+//  Created by Megan Reiffer on 10/14/17.
 //  Copyright © 2017 Joseph Hinkle. All rights reserved.
 //
 
@@ -36,7 +36,7 @@ struct GameModel {
      */
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String: Any]
-        self.startInfo = snapshotValue[GameModel.startInfoKey] as! GameStartInfo
+        self.startInfo = GameStartInfo(dictionary: snapshotValue[GameModel.startInfoKey] as! NSDictionary)
         self.players = snapshotValue[GameModel.playersKey] as! [String]
         self.gameInfo = snapshotValue[GameModel.gameInfoKey] as! String
         self.firebaseReference = snapshot.ref
@@ -44,12 +44,11 @@ struct GameModel {
     
     /* Method to help updating values of an existing object.
      */
-    func toDictionary() -> Any {
+    func toDictionary() -> NSDictionary {
         return [
-            GameModel.startInfoKey: self.startInfo,
+            GameModel.startInfoKey: self.startInfo.toDictionary(),
             GameModel.playersKey: self.players,
             GameModel.gameInfoKey: self.gameInfo
         ]
     }
 }
-

@@ -21,25 +21,22 @@ struct GameStartInfo {
     let time: String
     let meetingPlace: String
     var gameName: String
-    let firebaseReference: DatabaseReference?
     
     /* Initializer for instantiating a new object in code.
      (default meeting place is the "Student Union"
      */
-    init(time: String, gameName: String, id: String = "") {
+    init(time: String, gameName: String) {
         self.time = time
         self.meetingPlace = "Student Union"
         self.gameName = gameName
-        self.firebaseReference = nil
     }
     
     /* Initializer for instantiating a new object in code.
      */
-    init(time: String, meetingPlace: String, gameName: String, id: String = "") {
+    init(time: String, meetingPlace: String, gameName: String) {
         self.time = time
         self.meetingPlace = meetingPlace
         self.gameName = gameName
-        self.firebaseReference = nil
     }
     
     /* Initializer for instantiating an object received from Firebase.
@@ -49,12 +46,19 @@ struct GameStartInfo {
         self.time = snapshotValue[GameStartInfo.timeKey] as! String
         self.meetingPlace = snapshotValue[GameStartInfo.meetingPlaceKey] as! String
         self.gameName = snapshotValue[GameStartInfo.gameNameKey] as! String
-        self.firebaseReference = snapshot.ref
+    }
+
+    /* Initializer for instantiating an object received from Firebase.
+     */
+    init(dictionary: NSDictionary) {
+        self.time = dictionary[GameStartInfo.timeKey] as! String
+        self.meetingPlace = dictionary[GameStartInfo.meetingPlaceKey] as! String
+        self.gameName = dictionary[GameStartInfo.gameNameKey] as! String
     }
     
     /* Method to help updating values of an existing object.
      */
-    func toDictionary() -> Any {
+    func toDictionary() -> NSDictionary {
         return [
             GameStartInfo.timeKey: self.time,
             GameStartInfo.meetingPlaceKey: self.meetingPlace,

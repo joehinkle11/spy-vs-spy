@@ -15,21 +15,64 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
     let gameStarterInfoReference = Database.database().reference(withPath: "Games")
-    var myGamesList: [GameStartInfo] = []
+    var myGamesList: [GameModel] = []
+    var sectionHeaders: [String] = []
+    let dateFormatter = DateFormatter()
+    let calendar = Calendar.current
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+
         // Do any additional setup after loading the view.
+//        let key = self.gameStarterInfoReference.childByAutoId().key
+//        self.gameStarterInfoReference.child(key).setValue(GameModel(startInfo: GameStartInfo(time: "2017/10/07 13:22", gameName: "Team Orange"), players: ["Meg", "Joe", "Candace"], gameInfo: "to be made later").toDictionary())
         
         // Use Firebase library to configure APIs
-        FirebaseApp.configure()
+//        FirebaseApp.configure()
         
         self.gameStarterInfoReference.observe(.value, with: {
             snapshot in
-            var items: [GameStartInfo] = []
+            var items: [GameModel] = []
+            var gamesPerHeaderIndex = 0
+            var header = ""
+            var lastGame: GameModel? = nil
+            
             for item in snapshot.children {
                 let game = GameModel(snapshot: item as! DataSnapshot)
-                items.append(game.startInfo)
+                items.append(game)
+                lastGame = game
+                if (gamesPerHeaderIndex >= 7) {
+                    let dateOne = self.dateFormatter.date(from: game.startInfo.time)
+                    let month:String = self.dateFormatter.monthSymbols[Calendar.current.component(.month, from:  dateOne!)-1]
+                    let index = month.index(month.startIndex, offsetBy: 3)
+                    header += "- \(month.substring(to: index)) \(self.calendar.component(.day, from: dateOne!))"
+                    self.sectionHeaders.append(header)
+                    gamesPerHeaderIndex = 0
+                } else if (gamesPerHeaderIndex == 0) {
+                    let dateOne = self.dateFormatter.date(from: game.startInfo.time)
+                    let month:String = self.dateFormatter.monthSymbols[Calendar.current.component(.month, from:  dateOne!)-1]
+                    let index = month.index(month.startIndex, offsetBy: 3)
+                    header = "\(month.substring(to: index)) \(self.calendar.component(.day, from: dateOne!))"
+                    gamesPerHeaderIndex += 1
+                } else {
+                    gamesPerHeaderIndex += 1
+                }
+            }
+            if (gamesPerHeaderIndex < 7 && gamesPerHeaderIndex > 0) {
+                let dateOne = self.dateFormatter.date(from: (lastGame?.startInfo.time)!)
+                let month:String = self.dateFormatter.monthSymbols[Calendar.current.component(.month, from:  dateOne!)-1]
+                let index = month.index(month.startIndex, offsetBy: 3)
+                header += "- \(month.substring(to: index)) \(self.calendar.component(.day, from: dateOne!))"
+                self.sectionHeaders.append(header)
+                gamesPerHeaderIndex = 0
+            }
+            
+            items.sort {
+                let dateOne = self.dateFormatter.date(from: $0.startInfo.time)
+                let dateTwo = self.dateFormatter.date(from: $1.startInfo.time)
+                return self.calendar.component(.weekOfYear, from: dateOne!) < self.calendar.component(.weekOfYear, from: dateTwo!)
             }
             self.myGamesList = items
             self.tableView.reloadData()
@@ -43,7 +86,7 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
     
     //set # of sections in the table view
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sectionHeaders.count
     }
     
     //set # of rows in the table view
@@ -55,19 +98,19 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ViewGamesTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ViewGamesTableViewCell
-        let date = DateFormatter.stringFromDate(myGamesList[indexPath.row].time)
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
-        cell?.dayLabel.text = date.
-        cell?.timeLabel?.text = "12:30PM"
-        cell?.numberOfPlayersJoinedLabel?.text = "8/10"
+        let date = self.dateFormatter.date(from: myGamesList[indexPath.row].startInfo.time)
+        let hour = self.calendar.component(.hour, from: date!)
+        let minutes = self.calendar.component(.minute, from: date!)
+        cell?.dayLabel.text =  "\(dateFormatter.weekdaySymbols[Calendar.current.component(.weekday, from:  date!)])"
+        cell?.timeLabel?.text = "\(hour > 12 ? hour-12 : hour):\(minutes)\(hour > 12 ? "PM" : "AM")"
+        cell?.numberOfPlayersJoinedLabel?.text = "\(myGamesList[indexPath.row].players.count)/10"
+        cell?.gameNameLabel?.text = myGamesList[indexPath.row].startInfo.gameName
 
         return cell!
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Oct 2nd-7th"
+        return sectionHeaders[section] 
     }
     
 
