@@ -181,6 +181,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="joinButtonClicked:" destination="tAh-JS-pb6" eventType="touchUpInside" id="cla-vb-YhU"/>
                                     <segue destination="dfv-Lf-ybm" kind="push" id="Jhz-vB-cx5"/>
                                 </connections>
                             </button>
@@ -509,7 +510,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KxU-RO-SA0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="t67-Ow-pUa">
-                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -527,7 +528,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bwF-hN-slv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jjD-LI-Tur">
-                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

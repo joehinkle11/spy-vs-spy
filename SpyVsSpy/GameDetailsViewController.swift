@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
 
@@ -15,6 +17,8 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var joinButton: UIButton!
     var friendsList = ["hey", "bye", "Mr. Nacho", "Mrs. Flour"]
     var game: GameModel?
+    var user:User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,15 +28,18 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
         if let game = game {
             navItem?.title = game.startInfo.gameName
         }
+        var handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            self.user = user!
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return friendsList.count
+        return self.friendsList.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath) as? ProfileCollectionViewCell
-        cell?.profileNameLabel?.text = friendsList[indexPath.row]
+        cell?.profileNameLabel?.text = self.friendsList[indexPath.row]
         let image : UIImage = UIImage(named:"apptitle")!
         
         cell?.profileImage?.image = image
@@ -49,7 +56,11 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func joinButtonClicked(_ sender: Any) {
+        print("join Button clicked")
+        print(self.user)
+    }
+    
     /*
     // MARK: - Navigation
 

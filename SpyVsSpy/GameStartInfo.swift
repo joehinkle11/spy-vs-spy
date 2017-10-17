@@ -2,7 +2,7 @@
 //  GameStartInfo.swift
 //  SpyVsSpy
 //
-//  Created by Megan on 10/12/17.
+//  Created by Megan Reiffer on 10/12/17.
 //  Copyright © 2017 Joseph Hinkle. All rights reserved.
 //
 
