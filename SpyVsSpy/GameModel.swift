@@ -19,13 +19,13 @@ struct GameModel {
     
     /// Values for the json
     let startInfo: GameStartInfo
-    let players: [String]
+    let players: NSDictionary
     var gameInfo: String
     let firebaseReference: DatabaseReference?
     
     /* Initializer for instantiating a new object in code.
      */
-    init(startInfo: GameStartInfo, players: [String], gameInfo: String, id: String = "") {
+    init(startInfo: GameStartInfo, players: NSDictionary, gameInfo: String, id: String = "") {
         self.startInfo = startInfo
         self.players = players
         self.gameInfo = gameInfo
@@ -37,7 +37,11 @@ struct GameModel {
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String: Any]
         self.startInfo = GameStartInfo(dictionary: snapshotValue[GameModel.startInfoKey] as! NSDictionary)
-        self.players = snapshotValue[GameModel.playersKey] as! [String]
+        if ((snapshotValue[GameModel.playersKey]) != nil) {
+            self.players = snapshotValue[GameModel.playersKey] as! NSDictionary
+        } else {
+            self.players = NSDictionary()
+        }
         self.gameInfo = snapshotValue[GameModel.gameInfoKey] as! String
         self.firebaseReference = snapshot.ref
     }

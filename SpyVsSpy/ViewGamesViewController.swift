@@ -103,7 +103,7 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
         let minutes = self.calendar.component(.minute, from: date!)
         cell?.dayLabel.text =  "\(dateFormatter.weekdaySymbols[Calendar.current.component(.weekday, from:  date!)])"
         cell?.timeLabel?.text = "\(hour > 12 ? hour-12 : hour):\(minutes)\(hour > 12 ? "PM" : "AM")"
-        cell?.numberOfPlayersJoinedLabel?.text = "\(myGamesList[indexPath.row].players.count)/10"
+        cell?.numberOfPlayersJoinedLabel?.text = "\((myGamesList[indexPath.row].players as! NSDictionary).count)/10"
         cell?.gameNameLabel?.text = myGamesList[indexPath.row].startInfo.gameName
 
         return cell!

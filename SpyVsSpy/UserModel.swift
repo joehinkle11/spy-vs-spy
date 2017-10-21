@@ -13,8 +13,8 @@ struct UserModel {
     
     
     /// Keys for the json
-    static let profileInfoKey = "StartInfo"
-    static let friendsKey = "Players"
+    static let profileInfoKey = "ProfileInfo"
+    static let friendsKey = "Friends"
     static let gameInfoKey = "GameInfo"
     
     /// Values for the json

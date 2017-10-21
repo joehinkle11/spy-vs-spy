@@ -4,7 +4,7 @@
 //
 //  Created by Joseph Hinkle on 9/19/17.
 //  Copyright © 2017 Joseph Hinkle. All rights reserved.
-//
+//X
 
 import UIKit
 import Firebase
@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        
         // setup client ID
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
@@ -46,6 +45,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             // User is signed in
             print("Successfully logged into user with firebase with Google!")
+            
+            //If the user hasn't created info in the db yet do that now...
+            let uid = (Auth.auth().currentUser?.uid)!
+            var userReference = Database.database().reference(withPath: "Users")
+            userReference.child("\(uid)/\(UserModel.profileInfoKey)").observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                //If data doesn't exist in db.
+                if ((snapshot.value) == nil || !snapshot.exists()) {
+                    print("no users w/ that id")
+                    //Create standard userinfo and save to db.
+                    var userInfo = UserModel(profileInfo: ProfileModel(playerName: (Auth.auth().currentUser?.displayName)!, bio: "", rating: "", imageName: ""), friends: [], gameInfo: [], id: uid).toDictionary()
+                    userReference.child(uid).setValue(userInfo)
+                } else {
+                    print("User found...")
+                }
+                // ...
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
         }
     }
 
