@@ -39,6 +39,10 @@
 	<string>Required to receive location of Hacks</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Record sound for videos</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
