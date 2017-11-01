@@ -10,6 +10,7 @@
 		13ED905A2C88297D689C5CBA /* Pods_SpyVsSpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E18F4C9A78F476CAB8F3BD /* Pods_SpyVsSpy.framework */; };
 		5F5902E01F8C4C8900CB9831 /* StarRatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5902DF1F8C4C8900CB9831 /* StarRatingControl.swift */; };
 		5F5902E21F8C634B00CB9831 /* StarRatingViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5902E11F8C634B00CB9831 /* StarRatingViewer.swift */; };
+		5F8C29771FA8DE9700C6D4EF /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C29761FA8DE9700C6D4EF /* Building.swift */; };
 		5FE884AB1F8C3B0100A2569B /* HackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE884AA1F8C3B0100A2569B /* HackViewController.swift */; };
 		5FE884AD1F8C3D8C00A2569B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE884AC1F8C3D8C00A2569B /* CoreLocation.framework */; };
 		9F26ACB91F716ED200327E45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F26ACB81F716ED200327E45 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 		42E18F4C9A78F476CAB8F3BD /* Pods_SpyVsSpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpyVsSpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5902DF1F8C4C8900CB9831 /* StarRatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingControl.swift; sourceTree = "<group>"; };
 		5F5902E11F8C634B00CB9831 /* StarRatingViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingViewer.swift; sourceTree = "<group>"; };
+		5F8C29761FA8DE9700C6D4EF /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		5FE884AA1F8C3B0100A2569B /* HackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackViewController.swift; sourceTree = "<group>"; };
 		5FE884AC1F8C3D8C00A2569B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		90A8FE3EE5A1DDD3C0993D9F /* Pods-SpyVsSpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyVsSpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpyVsSpy/Pods-SpyVsSpy.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				9F26ACBC1F716ED200327E45 /* Main.storyboard */,
 				5F5902DF1F8C4C8900CB9831 /* StarRatingControl.swift */,
 				5FE884AA1F8C3B0100A2569B /* HackViewController.swift */,
+				5F8C29761FA8DE9700C6D4EF /* Building.swift */,
 				9F385BFF1F82B12300797DD2 /* SpecialViewController.swift */,
 				FA583D461F7889D200F344CE /* ProfileCollectionViewCell.swift */,
 				FA583D441F784C9A00F344CE /* GameDetailsViewController.swift */,
@@ -298,6 +301,7 @@
 				9F26ACB91F716ED200327E45 /* AppDelegate.swift in Sources */,
 				5F5902E01F8C4C8900CB9831 /* StarRatingControl.swift in Sources */,
 				FA4F21BF1F7AA33F00577F9B /* CameraViewController.swift in Sources */,
+				5F8C29771FA8DE9700C6D4EF /* Building.swift in Sources */,
 				FA7712EE1F8FDD4500571BE5 /* GameStartInfo.swift in Sources */,
 				5F5902E21F8C634B00CB9831 /* StarRatingViewer.swift in Sources */,
 				FA583D471F7889D200F344CE /* ProfileCollectionViewCell.swift in Sources */,
