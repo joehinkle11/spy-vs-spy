@@ -16,9 +16,6 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     var window: UIWindow?
-    
-    //Create buildings array
-    var buildings = [building]()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,30 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // setup client ID
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
-        
-        /*****CREATE BUILDINGS*****/
-        //Create Woodward building
-        let woodward = building(n: "Woodward")
-        woodward.setStruct(lat: 35.306738480027121, long: -80.735401120112030, rad: 25)
-        woodward.setStruct(lat: 35.307270227964324, long: -80.735824070964324, rad: 25)
-        woodward.setStruct(lat: 35.307127522766805, long: -80.736677051528730, rad: 25)
-        woodward.setStruct(lat: 35.307362470808727, long: -80.735537158400504, rad: 25)
-        woodward.setStruct(lat: 35.305582483104445, long: -80.736036853121490, rad: 25)
-        buildings.append(woodward)
-        print("Created Woodward")
-        
-        //Create COED building
-        let coed = building(n: "College of Education")
-        coed.setStruct(lat: 35.307648261185712, long: -80.733926306846982, rad: 50)
-        coed.setStruct(lat: 35.307402285189291, long: -80.733857970119843, rad: 50)
-        buildings.append(coed)
-        print("Created COED")
-        
-        //Create apartment
-        let apartment = building(n: "Apartment")
-        apartment.setStruct(lat: 35.292231878298608, long: -80.729466648847534, rad: 20)
-        buildings.append(apartment)
-        print("Created Apartment")
         
         return true
     }

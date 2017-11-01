@@ -83,16 +83,12 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         //Get buildings variable
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let buildings = appDelegate.buildings
+        let buildings = building().buildings
         
         //Loop through buildings
         for region in buildings
         {
-            for point in region.locations
-            {
-                self.manager.startMonitoring(for: point.region)
-            }
+            self.manager.startMonitoring(for: region)
         }
     }
 
