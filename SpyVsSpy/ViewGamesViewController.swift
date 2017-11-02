@@ -27,7 +27,7 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
 
         // Do any additional setup after loading the view.
 //        let key = self.gameStarterInfoReference.childByAutoId().key
-//        self.gameStarterInfoReference.child(key).setValue(GameModel(startInfo: GameStartInfo(time: "2017/10/07 13:22", gameName: "Team Orange"), players: ["Meg", "Joe", "Candace"], gameInfo: "to be made later").toDictionary())
+//        self.gameStarterInfoReference.child(key).setValue(GameModel(startInfo: GameStartInfo(time: "2017/11/01 13:22", gameName: "Team Orange"), players: NSDictionary(), gameInfo: GameInfoModel()).toDictionary())
         
         // Use Firebase library to configure APIs
 //        FirebaseApp.configure()
@@ -103,7 +103,7 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
         let minutes = self.calendar.component(.minute, from: date!)
         cell?.dayLabel.text =  "\(dateFormatter.weekdaySymbols[Calendar.current.component(.weekday, from:  date!)])"
         cell?.timeLabel?.text = "\(hour > 12 ? hour-12 : hour):\(minutes)\(hour > 12 ? "PM" : "AM")"
-        cell?.numberOfPlayersJoinedLabel?.text = "\((myGamesList[indexPath.row].players as! NSDictionary).count)/10"
+        cell?.numberOfPlayersJoinedLabel?.text = "\((myGamesList[indexPath.row].players ).count)/10"
         cell?.gameNameLabel?.text = myGamesList[indexPath.row].startInfo.gameName
 
         return cell!

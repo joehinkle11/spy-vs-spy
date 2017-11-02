@@ -30,7 +30,14 @@
 		FA583D451F784C9A00F344CE /* GameDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D441F784C9A00F344CE /* GameDetailsViewController.swift */; };
 		FA583D471F7889D200F344CE /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA583D461F7889D200F344CE /* ProfileCollectionViewCell.swift */; };
 		FA7712EE1F8FDD4500571BE5 /* GameStartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7712ED1F8FDD4500571BE5 /* GameStartInfo.swift */; };
+		FAA855D41FAAB94A004C2F68 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA855D31FAAB94A004C2F68 /* HomeViewController.swift */; };
+		FAA855D61FAAC662004C2F68 /* MainGameTabBarVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA855D51FAAC662004C2F68 /* MainGameTabBarVController.swift */; };
 		FAC19F2D1F75F9DB007A8600 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */; };
+		FACC137E1FA9127200824F30 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC137D1FA9127200824F30 /* LogTableViewCell.swift */; };
+		FACC13801FA9151500824F30 /* PlayerInGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC137F1FA9151500824F30 /* PlayerInGameModel.swift */; };
+		FACC13821FA91ECA00824F30 /* LogDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC13811FA91ECA00824F30 /* LogDataModel.swift */; };
+		FACC13851FA9270B00824F30 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC13841FA9270B00824F30 /* LogsViewController.swift */; };
+		FAF1BC131FA8FA170068A90E /* BackendGameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1BC121FA8FA170068A90E /* BackendGameLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,8 +68,15 @@
 		FA583D441F784C9A00F344CE /* GameDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsViewController.swift; sourceTree = "<group>"; };
 		FA583D461F7889D200F344CE /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA7712ED1F8FDD4500571BE5 /* GameStartInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartInfo.swift; sourceTree = "<group>"; };
+		FAA855D31FAAB94A004C2F68 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FAA855D51FAAC662004C2F68 /* MainGameTabBarVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameTabBarVController.swift; sourceTree = "<group>"; };
 		FAAEF8EC1F75F44800537F84 /* SpyVsSpy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpyVsSpy.entitlements; sourceTree = "<group>"; };
 		FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FACC137D1FA9127200824F30 /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
+		FACC137F1FA9151500824F30 /* PlayerInGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInGameModel.swift; sourceTree = "<group>"; };
+		FACC13811FA91ECA00824F30 /* LogDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDataModel.swift; sourceTree = "<group>"; };
+		FACC13841FA9270B00824F30 /* LogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
+		FAF1BC121FA8FA170068A90E /* BackendGameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendGameLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +122,7 @@
 		9F26ACB71F716ED200327E45 /* SpyVsSpy */ = {
 			isa = PBXGroup;
 			children = (
+				FACC13831FA9229300824F30 /* dbmodels */,
 				FAAEF8EC1F75F44800537F84 /* SpyVsSpy.entitlements */,
 				9F26ACB81F716ED200327E45 /* AppDelegate.swift */,
 				9F26ACBA1F716ED200327E45 /* ViewController.swift */,
@@ -127,11 +142,11 @@
 				FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */,
 				9F26ACC41F716ED200327E45 /* Info.plist */,
 				5F5902E11F8C634B00CB9831 /* StarRatingViewer.swift */,
-				FA7712ED1F8FDD4500571BE5 /* GameStartInfo.swift */,
-				FA326BF61F92C050007160BE /* GameModel.swift */,
-				FA154DCE1F952F8F007BA2F5 /* ProfileModel.swift */,
-				FA154DD01F9533B3007BA2F5 /* GameInfoModel.swift */,
-				FA154DD21F9569A2007BA2F5 /* UserModel.swift */,
+				FAF1BC121FA8FA170068A90E /* BackendGameLogic.swift */,
+				FACC137D1FA9127200824F30 /* LogTableViewCell.swift */,
+				FACC13841FA9270B00824F30 /* LogsViewController.swift */,
+				FAA855D31FAAB94A004C2F68 /* HomeViewController.swift */,
+				FAA855D51FAAC662004C2F68 /* MainGameTabBarVController.swift */,
 			);
 			path = SpyVsSpy;
 			sourceTree = "<group>";
@@ -143,6 +158,20 @@
 				42E18F4C9A78F476CAB8F3BD /* Pods_SpyVsSpy.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FACC13831FA9229300824F30 /* dbmodels */ = {
+			isa = PBXGroup;
+			children = (
+				FA326BF61F92C050007160BE /* GameModel.swift */,
+				FA7712ED1F8FDD4500571BE5 /* GameStartInfo.swift */,
+				FA154DCE1F952F8F007BA2F5 /* ProfileModel.swift */,
+				FA154DD01F9533B3007BA2F5 /* GameInfoModel.swift */,
+				FA154DD21F9569A2007BA2F5 /* UserModel.swift */,
+				FACC137F1FA9151500824F30 /* PlayerInGameModel.swift */,
+				FACC13811FA91ECA00824F30 /* LogDataModel.swift */,
+			);
+			path = dbmodels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,7 +209,7 @@
 				TargetAttributes = {
 					9F26ACB41F716ED200327E45 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = QL65BFTAW8;
+						DevelopmentTeam = B26A36AMBV;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -297,22 +326,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FACC137E1FA9127200824F30 /* LogTableViewCell.swift in Sources */,
 				FA583D411F783A6800F344CE /* ViewGamesTableViewCell.swift in Sources */,
 				FA154DCF1F952F8F007BA2F5 /* ProfileModel.swift in Sources */,
 				9F26ACBB1F716ED200327E45 /* ViewController.swift in Sources */,
 				FA583D451F784C9A00F344CE /* GameDetailsViewController.swift in Sources */,
 				9F26ACB91F716ED200327E45 /* AppDelegate.swift in Sources */,
 				5F5902E01F8C4C8900CB9831 /* StarRatingControl.swift in Sources */,
+				FAA855D41FAAB94A004C2F68 /* HomeViewController.swift in Sources */,
 				FA4F21BF1F7AA33F00577F9B /* CameraViewController.swift in Sources */,
 				5F8C29771FA8DE9700C6D4EF /* Building.swift in Sources */,
 				5F8C297B1FAA94B200C6D4EF /* CircularButton.swift in Sources */,
 				FA7712EE1F8FDD4500571BE5 /* GameStartInfo.swift in Sources */,
 				5F5902E21F8C634B00CB9831 /* StarRatingViewer.swift in Sources */,
+				FACC13821FA91ECA00824F30 /* LogDataModel.swift in Sources */,
+				FACC13851FA9270B00824F30 /* LogsViewController.swift in Sources */,
 				FA583D471F7889D200F344CE /* ProfileCollectionViewCell.swift in Sources */,
 				FA154DD31F9569A2007BA2F5 /* UserModel.swift in Sources */,
+				FACC13801FA9151500824F30 /* PlayerInGameModel.swift in Sources */,
 				9F385C001F82B12300797DD2 /* SpecialViewController.swift in Sources */,
 				5FE884AB1F8C3B0100A2569B /* HackViewController.swift in Sources */,
+				FAA855D61FAAC662004C2F68 /* MainGameTabBarVController.swift in Sources */,
 				FA326BF71F92C050007160BE /* GameModel.swift in Sources */,
+				FAF1BC131FA8FA170068A90E /* BackendGameLogic.swift in Sources */,
 				FA583D431F783AB600F344CE /* ViewGamesViewController.swift in Sources */,
 				FA154DD11F9533B3007BA2F5 /* GameInfoModel.swift in Sources */,
 			);
@@ -438,10 +474,10 @@
 			baseConfigurationReference = 24C33379969373C82C603B9E /* Pods-SpyVsSpy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = QL65BFTAW8;
+				DEVELOPMENT_TEAM = B26A36AMBV;
 				INFOPLIST_FILE = SpyVsSpy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dfgjkdfjsfjjsdkffh;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.impact-studios.SpyVsSpy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -452,10 +488,10 @@
 			baseConfigurationReference = 90A8FE3EE5A1DDD3C0993D9F /* Pods-SpyVsSpy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = QL65BFTAW8;
+				DEVELOPMENT_TEAM = B26A36AMBV;
 				INFOPLIST_FILE = SpyVsSpy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dfgjkdfjsfjjsdkffh;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.impact-studios.SpyVsSpy";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

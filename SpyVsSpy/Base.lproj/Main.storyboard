@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jk7-x9-tFe">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jk7-x9-tFe">
                                 <rect key="frame" x="70.5" y="316" width="179" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -25,6 +25,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="enrollButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TQt-7i-0w4"/>
                                     <segue destination="KxU-RO-SA0" kind="modal" id="fmj-3G-aqm"/>
                                 </connections>
                             </button>
@@ -42,6 +43,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="enrollButton" destination="Jk7-x9-tFe" id="fjH-lD-Ewz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -50,7 +54,7 @@
         <!--Games-->
         <scene sceneID="bk6-j4-gdM">
             <objects>
-                <viewController id="i69-Cu-3Dk" customClass="ViewGamesViewController" customModule="SpyVsSpy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewGamesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i69-Cu-3Dk" customClass="ViewGamesViewController" customModule="SpyVsSpy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mn7-tP-aj6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -418,13 +422,42 @@
                     <view key="view" contentMode="scaleToFill" id="zyZ-k8-ZQh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SO0-sx-A5y">
+                                <rect key="frame" x="0.0" y="68" width="320" height="451"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yjl-3B-V88" customClass="LogTableViewCell" customModule="SpyVsSpy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yjl-3B-V88" id="fHq-5Z-oYw">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zW7-KD-XnQ">
+                                                    <rect key="frame" x="142" y="11" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mainText" destination="zW7-KD-XnQ" id="z7l-xe-6sh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Logs" image="icons8-Spiral Bound Booklet-25" id="QoL-yy-cWA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ciW-k3-320" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2684.2666666666664" y="-185.54666666666665"/>
+            <point key="canvasLocation" x="2684" y="-186"/>
         </scene>
         <!--User Profile-->
         <scene sceneID="aJU-wr-twJ">
@@ -485,10 +518,10 @@
             </objects>
             <point key="canvasLocation" x="1513" y="1035"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Game Tab BarV Controller-->
         <scene sceneID="ROu-Sq-4YI">
             <objects>
-                <tabBarController id="dfv-Lf-ybm" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainGameTabBarVController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dfv-Lf-ybm" customClass="MainGameTabBarVController" customModule="SpyVsSpy" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="sO8-Sl-3Ha"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="uFT-EF-fm9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -509,7 +542,7 @@
         <!--Home-->
         <scene sceneID="ejU-Mm-0Su">
             <objects>
-                <viewController id="BJO-Ul-T0h" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BJO-Ul-T0h" customClass="HomeViewController" customModule="SpyVsSpy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F3q-TW-guQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -535,7 +568,7 @@
         <!--Navigation Controller-->
         <scene sceneID="vCo-CI-p9O">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KxU-RO-SA0" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ViewGamesNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KxU-RO-SA0" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="t67-Ow-pUa">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
