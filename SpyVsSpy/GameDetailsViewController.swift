@@ -36,7 +36,7 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
                 self.user = nil
             }
         }
-        
+
         game?.firebaseReference?.child("\(GameModel.playersKey)").observe(.value, with: {
             snapshot in
             var peopleInGame: [ProfileModel] = []
@@ -126,12 +126,18 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
     }
     
     @IBAction func joinButtonClicked(_ sender: Any) {
+        print("key")
+        print(self.game?.firebaseReference?.key ?? "No key")
+        print("ref")
+        print(self.game?.firebaseReference ?? "No ref")
         print("join Button clicked")
         print(self.user ?? "No User")
         print(self.user?.uid ?? "No id")
         //Add user to the game.
         if (self.user != nil && self.user?.uid != nil) {
-            game?.firebaseReference?.child("\(GameModel.playersKey)").child("\((self.user?.uid)!)").setValue(self.user?.displayName)
+            game?.firebaseReference?.child("\(GameModel.playersKey)").child("\((self.user?.uid)!)").setValue(PlayerInGameModel(playerName: (self.user?.displayName)!).toDictionary(), withCompletionBlock: { (err, ref) in
+                self.userReference.child("\(String(describing: (self.user?.uid)!))/\(UserModel.currentGameKey)").setValue(self.game?.firebaseReference?.key)
+            })
 
         }
     }

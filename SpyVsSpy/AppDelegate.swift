@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // setup client ID
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
-        
+        print("HERE")
 
         return true
     }
@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 if ((snapshot.value) == nil || !snapshot.exists()) {
                     print("no users w/ that id")
                     //Create standard userinfo and save to db.
-                    var userInfo = UserModel(profileInfo: ProfileModel(playerName: (Auth.auth().currentUser?.displayName)!, bio: "", rating: "", imageName: ""), friends: [], gameInfo: [], id: uid).toDictionary()
+                    var userInfo = UserModel(profileInfo: ProfileModel(playerName: (Auth.auth().currentUser?.displayName)!, bio: "", rating: "", imageName: ""), friends: [], gameInfo: [],currentGame: "", id: uid).toDictionary()
                     userReference.child(uid).setValue(userInfo)
                 } else {
                     print("User found...")
