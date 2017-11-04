@@ -15,12 +15,22 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var currentLatitude: UILabel!
     @IBOutlet weak var currentLongitude: UILabel!
     @IBOutlet weak var currentLocation: UILabel!
+    @IBOutlet weak var hackbtn: UIButton!
     
     //Set up CLLlocation instance
     var manager = CLLocationManager()
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        
+        //Draw circular button
+        hackbtn.layer.cornerRadius = 0.5 * hackbtn.bounds.size.width
+        hackbtn.clipsToBounds = true
+        hackbtn.backgroundColor = UIColor.red
+        hackbtn.setTitle("HACK", for: .normal)
+        hackbtn.setTitleColor(UIColor.white, for: .normal)
+        view.addSubview(hackbtn)
         
         //Set up location manager
         manager.delegate = self
@@ -44,12 +54,14 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
         let location: CLLocation = locations[locations.count - 1]
         currentLatitude.text = String(format: "%.15f", location.coordinate.latitude)
         currentLongitude.text = String(format: "%.15f", location.coordinate.longitude)
@@ -67,12 +79,13 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion)
+    {
         print("Started monitoring")
     }
     
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion)
+    {
         //Starting values
         let identifier = region.identifier
         let chars = Array(identifier)
@@ -93,7 +106,8 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         currentLocation.text = name
     }
     
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion)
+    {
         currentLocation.text = "Out of Range"
     }
 }
