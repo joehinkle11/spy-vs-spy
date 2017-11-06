@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SpyVsSpy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SpyVsSpy" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,6 +211,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" id="nAn-la-UYu">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.58089777509999996" green="0.86989032470000005" blue="0.92106541450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Special" id="dfV-ns-Z70"/>
+                                </items>
+                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nSe-Sj-8NA">
                                 <rect key="frame" x="0.0" y="215" width="320" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -229,21 +241,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Hack"/>
                                 <connections>
-                                    <segue destination="EWV-aK-w7d" kind="push" id="ZtW-5Q-DD7"/>
+                                    <segue destination="EWV-aK-w7d" kind="push" id="qzA-Ru-aD9"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" id="nAn-la-UYu">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.58089777509999996" green="0.86989032470000005" blue="0.92106541450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Special" id="2cJ-Ey-Tdw"/>
-                                </items>
-                            </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mask" id="02X-r4-9aR">
                                 <rect key="frame" x="108" y="287" width="105" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -252,11 +252,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Special" image="icons8-Briefcase-25" id="ks7-X2-ch8"/>
+                    <navigationItem key="navigationItem" title="Special" id="Cc8-zA-SN5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ue7-Nx-JwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2702" y="512"/>
+            <point key="canvasLocation" x="3136" y="573"/>
         </scene>
         <!--Hack-->
         <scene sceneID="5J6-LK-hRQ">
@@ -267,7 +267,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" misplaced="YES" translucent="NO" id="d6I-ep-9qb">
-                                <rect key="frame" x="0.0" y="16" width="320" height="48"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.58089777509999996" green="0.86989032470000005" blue="0.92106541450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -276,60 +276,95 @@
                                 </textAttributes>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Current Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sdu-9h-RyD">
-                                <rect key="frame" x="98" y="110" width="125" height="21"/>
+                                <rect key="frame" x="98" y="376" width="125" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Current Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eIE-WY-eDb">
-                                <rect key="frame" x="91" y="215" width="139" height="21"/>
+                                <rect key="frame" x="91" y="446" width="139" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hF6-gK-zfv">
-                                <rect key="frame" x="16" y="260" width="288" height="21"/>
+                                <rect key="frame" x="16" y="475" width="288" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YDp-8Q-ncb">
-                                <rect key="frame" x="16" y="154" width="288" height="21"/>
+                                <rect key="frame" x="16" y="404" width="288" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l5H-ID-pm4">
-                                <rect key="frame" x="30" y="412" width="257" height="21"/>
+                                <rect key="frame" x="32" y="98" width="257" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="POk-vC-iuU">
+                                <rect key="frame" x="89" y="178" width="142" height="138"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title=" "/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="start_hacking:" destination="EWV-aK-w7d" eventType="touchUpInside" id="jih-Wf-qpx"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" id="6bg-B8-1Ci">
+                                <rect key="frame" x="58" y="345" width="204" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hack Complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3en-qQ-w4B">
+                                <rect key="frame" x="101" y="335" width="118" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Current Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gQT-Wp-dlT">
-                                <rect key="frame" x="96" y="372" width="128" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="xZs-8D-BUV">
+                                <rect key="frame" x="89" y="178" width="142" height="138"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Hack" id="d7r-fY-ikc"/>
+                    <navigationItem key="navigationItem" title="Hack" id="dby-ij-o8G"/>
                     <connections>
                         <outlet property="currentLatitude" destination="YDp-8Q-ncb" id="iAS-Bb-WAd"/>
                         <outlet property="currentLocation" destination="l5H-ID-pm4" id="hHl-2e-fR3"/>
                         <outlet property="currentLongitude" destination="hF6-gK-zfv" id="v5H-1Q-tvc"/>
+                        <outlet property="hack_img" destination="xZs-8D-BUV" id="rQX-Br-9n1"/>
+                        <outlet property="hackbtn" destination="POk-vC-iuU" id="cdB-mO-naJ"/>
+                        <outlet property="hackcomplete" destination="3en-qQ-w4B" id="EcM-aV-yH9"/>
+                        <outlet property="progressbar" destination="6bg-B8-1Ci" id="WaC-oI-w5l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pvu-AW-mpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3319" y="802"/>
+            <point key="canvasLocation" x="3733" y="573"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="IDw-Yt-x7b">
@@ -378,6 +413,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="yQH-F9-Wlt"/>
                     <connections>
                         <outlet property="previewView" destination="MUD-9l-QA4" id="khV-QD-q3g"/>
                         <outlet property="recordButton" destination="4ig-9j-8XC" id="65e-oe-Vu7"/>
@@ -385,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSD-Jh-PL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4060.2666666666664" y="528.24000000000001"/>
+            <point key="canvasLocation" x="3733" y="-290"/>
         </scene>
         <!--Messaging-->
         <scene sceneID="iBc-aP-ApZ">
@@ -517,7 +553,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BJO-Ul-T0h" kind="relationship" relationship="viewControllers" id="2lZ-kg-l99"/>
-                        <segue destination="iHC-G1-yTj" kind="relationship" relationship="viewControllers" id="Tb6-9i-raI"/>
+                        <segue destination="dWz-Zn-QVj" kind="relationship" relationship="viewControllers" id="Tb6-9i-raI"/>
                         <segue destination="0BW-8G-VZJ" kind="relationship" relationship="viewControllers" id="zyM-fX-z5N"/>
                         <segue destination="TZl-lt-FAc" kind="relationship" relationship="viewControllers" id="r5d-oS-nev"/>
                     </connections>
@@ -619,6 +655,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdW-ba-Vaj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1155.2" y="-635.21333333333337"/>
+        </scene>
+        <!--Special-->
+        <scene sceneID="QqJ-uL-e7I">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dWz-Zn-QVj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Special" image="icons8-Briefcase-25" id="Egi-iM-2vY"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DaQ-5g-tg0">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iHC-G1-yTj" kind="relationship" relationship="rootViewController" id="iRY-pt-4BO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nee-hr-DRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2684" y="573"/>
         </scene>
     </scenes>
     <resources>

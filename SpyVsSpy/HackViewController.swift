@@ -15,66 +15,51 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var currentLatitude: UILabel!
     @IBOutlet weak var currentLongitude: UILabel!
     @IBOutlet weak var currentLocation: UILabel!
+    @IBOutlet weak var hackbtn: UIButton!
+    @IBOutlet weak var progressbar: UIProgressView!
+    @IBOutlet weak var hackcomplete: UILabel!
+    @IBOutlet weak var hack_img: UIImageView!
     
     //Set up CLLlocation instance
     var manager = CLLocationManager()
     
-    override func viewDidLoad() {
+    //Set timer
+    var seconds = 60
+    var time: Float = 0
+    
+    //Create timer
+    var timer = Timer()
+    
+    //Create image
+    let checkImage = UIImage(named: "checkmark")
+    let xImage = UIImage(named: "redX")
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
+        
+        //Hide image
+        hack_img.isHidden = true
+        
+        //Draw circular button
+        hackbtn.layer.cornerRadius = 0.5 * hackbtn.bounds.size.width
+        hackbtn.clipsToBounds = true
+        hackbtn.backgroundColor = UIColor.red
+        hackbtn.setTitle("HACK", for: .normal)
+        hackbtn.setTitleColor(UIColor.white, for: .normal)
+        //hackbtn.isHidden = true
+        
+        //Hide progress bar
+        progressbar.isHidden = true
+        
+        //Hide label
+        hackcomplete.isHidden = true
         
         //Set up location manager
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
-        
-        /**Create Geofences**/
-        /*
-        //Library
-        let apartment_center = CLLocationCoordinate2DMake(35.292231878298608, -80.729466648847534)
-        let apartment_region = CLCircularRegion(center: apartment_center, radius: 10, identifier: "Apartment")
-        print("Apartment Geofence created.")
-        apartment_region.notifyOnEntry = true
-        apartment_region.notifyOnExit = true
-        
-        //WOODWARD
-        let woodward_center_1 = CLLocationCoordinate2DMake(35.306738480027121, -80.735401120112030)
-        let woodward_region_1 = CLCircularRegion(center: woodward_center_1, radius: 25, identifier: "Woodward1")
-        print("Woodward Region 1 Geofence created")
-        woodward_region_1.notifyOnEntry = true
-        woodward_region_1.notifyOnExit = true
-        
-        let woodward_center_2 = CLLocationCoordinate2DMake(35.307270227964324, -80.735824070964324)
-        let woodward_region_2 = CLCircularRegion(center: woodward_center_2, radius: 50, identifier: "Woodward2")
-        print("Woodward Region 2 Geofence created")
-        woodward_region_2.notifyOnEntry = true
-        woodward_region_2.notifyOnExit = true
-        
-        let woodward_center_3 = CLLocationCoordinate2DMake(35.307127522766805, -80.736677051528730)
-        let woodward_region_3 = CLCircularRegion(center: woodward_center_3, radius: 25, identifier: "Woodward3")
-        print("Woodward Region 3 Geofence created")
-        woodward_region_3.notifyOnEntry = true
-        woodward_region_3.notifyOnExit = true
-        
-        let woodward_center_4 = CLLocationCoordinate2DMake(35.307362470808727, -80.735537158400504)
-        let woodward_region_4 = CLCircularRegion(center: woodward_center_4, radius: 50, identifier: "Woodward4")
-        print("Woodward Region 4 Geofence created")
-        woodward_region_4.notifyOnEntry = true
-        woodward_region_4.notifyOnExit = true
-        
-        let woodward_center_5 = CLLocationCoordinate2DMake(35.305582483104445, -80.736036853121490)
-        let woodward_region_5 = CLCircularRegion(center: woodward_center_5, radius: 25, identifier: "Woodward5")
-        print("Woodward Region 5 Geofence created")
-        woodward_region_5.notifyOnEntry = true
-        woodward_region_5.notifyOnExit = true
-        
-        //Start monitoring geofence regions
-        //self.manager.startMonitoring(for: apartment_region)
-       // self.manager.startMonitoring(for: woodward_region_1)
-        self.manager.startMonitoring(for: woodward_region_2)
-        //self.manager.startMonitoring(for: woodward_region_3)
-        self.manager.startMonitoring(for: woodward_region_4)
-        //self.manager.startMonitoring(for: woodward_region_5)*/
         
         //Remove any locations being monitored
         for region in manager.monitoredRegions
@@ -92,12 +77,14 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
         let location: CLLocation = locations[locations.count - 1]
         currentLatitude.text = String(format: "%.15f", location.coordinate.latitude)
         currentLongitude.text = String(format: "%.15f", location.coordinate.longitude)
@@ -115,12 +102,13 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion)
+    {
         print("Started monitoring")
     }
     
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion)
+    {
         //Starting values
         let identifier = region.identifier
         let chars = Array(identifier)
@@ -137,11 +125,78 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
         
+        if (hack_img.image == xImage) //Red X - Not in range/Already hacked
+        {
+            hack_img.isHidden = true
+            hackbtn.isHidden = false
+            hackcomplete.isHidden = true
+        }
+        else if(hack_img.image == checkImage) //Just hacked
+        {
+            hackbtn.isHidden = true
+            hack_img.isHidden = false
+            hackcomplete.isHidden = true
+        }
+        
         //Rename label
         currentLocation.text = name
     }
     
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion)
+    {
         currentLocation.text = "Out of Range"
+        hack_img.image = xImage
+        hack_img.isHidden = false
+        hackbtn.isHidden = true
+    }
+    
+    @IBAction func start_hacking(_ sender: Any)
+    {
+        //Enable progress bar
+        progressbar.isHidden = false
+        hackcomplete.isHidden = true
+        
+        print("Button clicked")
+        
+        //Decrement timer
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(HackViewController.updateTimer), userInfo: nil, repeats: true)
+    }
+ 
+    func updateTimer()
+    {
+        //Time
+        time = time + 0.01667
+        
+        //Set progress
+        progressbar.setProgress(Float(time), animated: true)
+        
+        seconds -= 1
+        print(seconds)
+        
+        if (seconds == 0)
+        {
+            //Stop timer
+            timer.invalidate()
+            print("Timer Complete")
+            
+            //Set progress bar to 100%
+            progressbar.setProgress(1.0, animated: true)
+            
+            //Hide progress bar and unhide label
+            progressbar.isHidden = true
+            hackcomplete.isHidden = false
+            
+            //Change button to image
+            hackbtn.isHidden = true
+            hack_img.image = checkImage
+            hack_img.isHidden = false
+            
+            //Reset timer value
+            seconds = 60
+            time = 0
+            
+            //Reset progress bar
+            progressbar.setProgress(0.0, animated: true)
+        }
     }
 }
