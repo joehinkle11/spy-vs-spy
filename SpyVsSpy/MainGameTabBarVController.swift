@@ -2,7 +2,7 @@
 //  MainGameTabBarVController.swift
 //  SpyVsSpy
 //
-//  Created by Macbook on 11/1/17.
+//  Created by Megan Reiffer on 11/1/17.
 //  Copyright © 2017 Joseph Hinkle. All rights reserved.
 //
 

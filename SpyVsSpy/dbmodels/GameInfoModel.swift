@@ -14,27 +14,27 @@ struct GameInfoModel {
     
     /// Keys for the json
     static let logsKey = "logs"
-    static let hackedLocationsKey = "hackedLocations"
+    static let locationsToHackKey = "locationsToHack"
     static let chatsKey = "chats"
     
     /// Values for the json
     let logs: [String]
-    let hackedLocations: [String]
+    let locationsToHack: [String]
     var chats: [String]
     
     /* Initializer for instantiating a new object in code.
      */
     init() {
         self.logs = []
-        self.hackedLocations = []
+        self.locationsToHack = ["Woodward", "COED", "CHHS"] //TODO: 
         self.chats = []
     }
     
     /* Initializer for instantiating a new object in code.
      */
-    init(logs: [String], hackedLocations: [String], chats: [String]) {
+    init(logs: [String], locationsToHack: [String], chats: [String]) {
         self.logs = logs
-        self.hackedLocations = hackedLocations
+        self.locationsToHack = locationsToHack
         self.chats = chats
     }
     
@@ -43,7 +43,7 @@ struct GameInfoModel {
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String: Any]
         self.logs = snapshotValue[GameInfoModel.logsKey] as! [String]
-        self.hackedLocations = snapshotValue[GameInfoModel.hackedLocationsKey] as! [String]
+        self.locationsToHack = snapshotValue[GameInfoModel.locationsToHackKey] as! [String]
         self.chats = snapshotValue[GameInfoModel.chatsKey] as! [String]
     }
     
@@ -51,7 +51,7 @@ struct GameInfoModel {
      */
     init(dictionary: NSDictionary) {
         self.logs = dictionary[GameInfoModel.logsKey] as! [String]
-        self.hackedLocations = dictionary[GameInfoModel.hackedLocationsKey] as! [String]
+        self.locationsToHack = dictionary[GameInfoModel.locationsToHackKey] as! [String]
         self.chats = dictionary[GameInfoModel.chatsKey] as! [String]
     }
     
@@ -60,7 +60,7 @@ struct GameInfoModel {
     func toDictionary() -> NSDictionary {
         return [
             GameInfoModel.logsKey: self.logs,
-            GameInfoModel.hackedLocationsKey: self.hackedLocations,
+            GameInfoModel.locationsToHackKey: self.locationsToHack,
             GameInfoModel.chatsKey: self.chats
         ]
     }

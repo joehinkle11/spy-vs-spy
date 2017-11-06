@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  SpyVsSpy
 //
-//  Created by Macbook on 11/1/17.
+//  Created by Megan Reiffer on 11/1/17.
 //  Copyright © 2017 Joseph Hinkle. All rights reserved.
 //
 
@@ -32,4 +32,31 @@ class HomeViewController: UIViewController {
     }
     */
 
+    @IBAction func testHackPressed(_ sender: Any) {
+        print("testHackPressed")
+        BackendGameLogic.hackBuilding(building: "Woodward") { (result) in
+            print("result: \(result)")
+        }
+    }
+    @IBAction func testGetPlayersPressed(_ sender: Any) {
+        print("testGetPlayersPressed")
+        BackendGameLogic.listOfPlayers { (result) in
+            print("result: \(result)")
+        }
+
+    }
+    @IBAction func testSnipePressed(_ sender: Any) {
+        print("testSnipePressed")
+        BackendGameLogic.snipePlayer(playerId: "ys8Jbgjs1DPjU66nxNRe8FrPl3u1") { (result) in
+            print("result: \(result)")
+        }
+
+    }
+    @IBAction func testGetBuildingsPressed(_ sender: Any) {
+        print("testGetBuildingsPressed")
+        BackendGameLogic.listOfLocationsToHack { (result) in
+            print("result: \(result)")
+        }
+
+    }
 }

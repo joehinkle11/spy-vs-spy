@@ -45,9 +45,9 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     func goToNextScreenIfLoggedIn() {
-        var gameId = BackendGameLogic { (result) in
+        BackendGameLogic.getGameId(completion: { (result) in
             print("result: \(result)")
-            if (result == BackendGameLogic().no_user) {
+            if (result == BackendGameLogic.no_user) {
 //                Don't allow player to hit the play button until they log in
                 self.enrollButton.isEnabled = false
                 
@@ -56,7 +56,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                     self.enrollButton.isEnabled = true
                     
                 } else {
-                    if (result == BackendGameLogic().no_game) {
+                    if (result == BackendGameLogic.no_game) {
                         //                Show list of games
                         //(Get current controller)
                         let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
@@ -79,7 +79,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                     }
                 }
             }
-        }
+        })
         
     }
     

@@ -11,8 +11,6 @@ import Foundation
 import Firebase
 
 struct PlayerInGameModel {
-    
-    
     /// Keys for the json
     static let playerNameKey = "playerName"
     static let isDeadKey = "isDead"
