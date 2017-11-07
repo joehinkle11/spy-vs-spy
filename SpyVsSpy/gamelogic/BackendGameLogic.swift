@@ -69,10 +69,10 @@ class BackendGameLogic {
     /// if all players sniped or if all buildings hacked.
     ///
     /// - Returns: String, (static values above)
-    ///      -"Snipers" if snipers won
-    ///      -"Spies" if spies won
-    ///      -"NONE" if the game isn't over
-    ///      -"ERROR" if an error
+    ///      -BackendLogic.SNIPERS_WON if snipers won
+    ///      -BackendLogic.SPIES_WON if spies won
+    ///      -BackendLogic.NO_ONE_WON if the game isn't over
+    ///      -BackendLogic.ERROR if an error
     static func isWon(completion: @escaping (_ isComplete: String) -> Void) {
         var answer = "NONE"
         answer = "true"

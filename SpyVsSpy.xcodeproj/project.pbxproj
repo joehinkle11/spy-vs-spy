@@ -120,6 +120,7 @@
 		9F26ACB71F716ED200327E45 /* SpyVsSpy */ = {
 			isa = PBXGroup;
 			children = (
+				FA402AB11FAFF871000EE24A /* gamelogic */,
 				FACC13831FA9229300824F30 /* dbmodels */,
 				FAAEF8EC1F75F44800537F84 /* SpyVsSpy.entitlements */,
 				9F26ACB81F716ED200327E45 /* AppDelegate.swift */,
@@ -139,7 +140,6 @@
 				FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */,
 				9F26ACC41F716ED200327E45 /* Info.plist */,
 				5F5902E11F8C634B00CB9831 /* StarRatingViewer.swift */,
-				FAF1BC121FA8FA170068A90E /* BackendGameLogic.swift */,
 				FACC137D1FA9127200824F30 /* LogTableViewCell.swift */,
 				FACC13841FA9270B00824F30 /* LogsViewController.swift */,
 				FAA855D31FAAB94A004C2F68 /* HomeViewController.swift */,
@@ -155,6 +155,14 @@
 				42E18F4C9A78F476CAB8F3BD /* Pods_SpyVsSpy.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA402AB11FAFF871000EE24A /* gamelogic */ = {
+			isa = PBXGroup;
+			children = (
+				FAF1BC121FA8FA170068A90E /* BackendGameLogic.swift */,
+			);
+			path = gamelogic;
 			sourceTree = "<group>";
 		};
 		FACC13831FA9229300824F30 /* dbmodels */ = {
