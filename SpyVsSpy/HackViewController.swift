@@ -162,7 +162,7 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(HackViewController.updateTimer), userInfo: nil, repeats: true)
     }
  
-    func updateTimer()
+    @objc func updateTimer()
     {
         //Time
         time = time + 0.01667

@@ -93,7 +93,7 @@ import UIKit
     }
     
     //Action for pressing button
-    func ratePlayer(button: UIButton)
+    @objc func ratePlayer(button: UIButton)
     {
         guard let index = ratingButtons.index(of: button) else {
             fatalError("The button, \(button), is not in the array.")
