@@ -19,9 +19,13 @@ class SniperShotViewController: UIViewController {
     @IBOutlet weak var animationView: UIImageView!
     @IBOutlet weak var fireButton: UIButton!
     @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var muteButton: UIButton!
     
     let animationDuration = 3.0
     private var isLoading = true
+    
+    // screen settings which ought to be set, though defaults are given
+    var isMuted = false
     
     
     override func viewDidLoad() {
@@ -59,6 +63,13 @@ class SniperShotViewController: UIViewController {
         animationView.animationImages = imgListArray
         animationView.animationDuration = animationDuration
         
+        setupAudio()
+        if (isMuted) {
+            muteButton.setImage(UIImage(named:"ic_volume_off"), for: UIControlState.normal)
+        } else {
+            muteButton.setImage(UIImage(named:"ic_volume_up"), for: UIControlState.normal)
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,9 +88,8 @@ class SniperShotViewController: UIViewController {
         self.view.layer.addSublayer(previewLayer)
         previewLayer?.frame = self.view.layer.frame
         previewLayer.contentsGravity = AVLayerVideoGravity.resizeAspectFill.rawValue
-//        self.view.bringSubview(toFront: animationView)
-//        self.view.bringSubview(toFront: fireButton)
         self.view.bringSubview(toFront: loadingLabel)
+        self.view.bringSubview(toFront: self.muteButton)
         
         captureSession.startRunning()
         
@@ -95,13 +105,24 @@ class SniperShotViewController: UIViewController {
             self.view.layer.addSublayer(self.previewLayer)
             self.view.bringSubview(toFront: self.animationView)
             self.view.bringSubview(toFront: self.fireButton)
+            self.view.bringSubview(toFront: self.muteButton)
         })
     }
     
     @IBAction func fireButtonClicked(_ sender: Any) {
         if (!isLoading) {
             fire()
-            self.playSound()
+            if (!isMuted) {
+                self.playSound()
+            }
+        }
+    }
+    @IBAction func muteButtonClicked(_ sender: Any) {
+        isMuted = !isMuted
+        if (isMuted) {
+            muteButton.setImage(UIImage(named:"ic_volume_off"), for: UIControlState.normal)
+        } else {
+            muteButton.setImage(UIImage(named:"ic_volume_up"), for: UIControlState.normal)
         }
     }
     
@@ -121,30 +142,19 @@ class SniperShotViewController: UIViewController {
     }
     
     var player: AVAudioPlayer?
-    func playSound() {
-        print("play sound")
+    func setupAudio() {
         guard let url = Bundle.main.url(forResource: "mafiasound", withExtension: "mp3") else { return }
-        
-        print("got url")
         do {
-            print("in do")
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
-            print("got av audio")
-            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-            print("player setup done")
-            /* iOS 10 and earlier require the following line:
-             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-            
-            guard let player = player else { return }
-            print("guard player")
-            player.play()
-            print("finished playing")
-
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    func playSound() {
+        guard let player = player else { return }
+        player.play()
     }
     
 }
