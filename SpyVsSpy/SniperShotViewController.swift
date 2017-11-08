@@ -19,6 +19,7 @@ class SniperShotViewController: UIViewController {
     @IBOutlet weak var animationView: UIImageView!
     @IBOutlet weak var fireButton: UIButton!
     @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var hudView: UIView!
     @IBOutlet weak var muteButton: UIButton!
     
     let animationDuration = 3.0
@@ -89,7 +90,7 @@ class SniperShotViewController: UIViewController {
         previewLayer?.frame = self.view.layer.frame
         previewLayer.contentsGravity = AVLayerVideoGravity.resizeAspectFill.rawValue
         self.view.bringSubview(toFront: loadingLabel)
-        self.view.bringSubview(toFront: self.muteButton)
+        self.view.bringSubview(toFront: self.hudView)
         
         captureSession.startRunning()
         
@@ -104,8 +105,8 @@ class SniperShotViewController: UIViewController {
             self.isLoading = false
             self.view.layer.addSublayer(self.previewLayer)
             self.view.bringSubview(toFront: self.animationView)
+            self.view.bringSubview(toFront: self.hudView)
             self.view.bringSubview(toFront: self.fireButton)
-            self.view.bringSubview(toFront: self.muteButton)
         })
     }
     
@@ -145,7 +146,7 @@ class SniperShotViewController: UIViewController {
     func setupAudio() {
         guard let url = Bundle.main.url(forResource: "mafiasound", withExtension: "mp3") else { return }
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
             try AVAudioSession.sharedInstance().setActive(true)
             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
         } catch let error {
