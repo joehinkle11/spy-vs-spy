@@ -606,13 +606,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="m1p-qZ-hm8">
-                                <rect key="frame" x="145" y="538" width="30" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Fire"/>
                                 <connections>
                                     <action selector="fireButtonClicked:" destination="nbq-K6-gje" eventType="touchUpInside" id="TTI-9C-Aw8"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D7r-i9-27P">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="72"/>
+                                <color key="textColor" red="0.97448743449999997" green="1" blue="0.98237769760000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -620,6 +626,7 @@
                     <connections>
                         <outlet property="animationView" destination="BUu-6c-sPQ" id="eGO-wi-s7Z"/>
                         <outlet property="fireButton" destination="m1p-qZ-hm8" id="eH6-dO-Ls8"/>
+                        <outlet property="loadingLabel" destination="D7r-i9-27P" id="USK-tx-gne"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJB-0O-RYP" userLabel="First Responder" sceneMemberID="firstResponder"/>

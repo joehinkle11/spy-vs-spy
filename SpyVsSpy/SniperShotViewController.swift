@@ -18,8 +18,10 @@ class SniperShotViewController: UIViewController {
     
     @IBOutlet weak var animationView: UIImageView!
     @IBOutlet weak var fireButton: UIButton!
+    @IBOutlet weak var loadingLabel: UILabel!
     
     let animationDuration = 2.6
+    private var isLoading = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,7 @@ class SniperShotViewController: UIViewController {
         }
         
         var imgListArray :[UIImage] = []
-        for num in 0...57
+        for num in 0...58
         {
 
             var strImageName : String = "mafia_000"
@@ -50,12 +52,9 @@ class SniperShotViewController: UIViewController {
             let image  = UIImage(named:strImageName)
             imgListArray.append(image!)
         }
-        let imageArray = (0...9).map { UIImage(named: "mafia_0000\($0)")! }
+        
         animationView.animationImages = imgListArray
         animationView.animationDuration = animationDuration
-        animationView.animationRepeatCount = 1
-        animationView.alpha = 0.001
-        animationView.startAnimating()
         
     }
     
@@ -75,20 +74,38 @@ class SniperShotViewController: UIViewController {
         self.view.layer.addSublayer(previewLayer)
         previewLayer?.frame = self.view.layer.frame
         previewLayer.contentsGravity = AVLayerVideoGravity.resizeAspectFill.rawValue
-        self.view.bringSubview(toFront: animationView)
-        self.view.bringSubview(toFront: fireButton)
+//        self.view.bringSubview(toFront: animationView)
+//        self.view.bringSubview(toFront: fireButton)
+        self.view.bringSubview(toFront: loadingLabel)
         
         captureSession.startRunning()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+            self.fire()
+            self.loadingLabel.text = "Loading..."
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration + 0.1, execute: {
+            self.animationView.alpha = 0.0
+            self.loadingLabel.text = ""
+            self.isLoading = false
+            self.view.layer.addSublayer(self.previewLayer)
+            self.view.bringSubview(toFront: self.animationView)
+            self.view.bringSubview(toFront: self.fireButton)
+        })
     }
     
     @IBAction func fireButtonClicked(_ sender: Any) {
-        fire()
+        if (!isLoading) {
+            fire()
+        }
     }
     
     func fire() {
         self.animationView.alpha = 1.0
 //        self.animationView.animation
         self.animationView.stopAnimating()
+        animationView.animationRepeatCount = 1
         self.animationView.startAnimating()
         
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
