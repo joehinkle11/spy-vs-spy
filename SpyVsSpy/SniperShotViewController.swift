@@ -20,8 +20,9 @@ class SniperShotViewController: UIViewController {
     @IBOutlet weak var fireButton: UIButton!
     @IBOutlet weak var loadingLabel: UILabel!
     
-    let animationDuration = 2.6
+    let animationDuration = 3.0
     private var isLoading = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +41,14 @@ class SniperShotViewController: UIViewController {
         }
         
         var imgListArray :[UIImage] = []
-        for num in 0...58
+        for num in 0...80
         {
 
             var strImageName : String = "mafia_000"
             if (num < 10) {
                 strImageName.append("0" + String(num))
+            } else if (num > 58) {
+                strImageName = "mafia_00058"
             } else {
                 strImageName.append(String(num))
             }
@@ -85,7 +88,7 @@ class SniperShotViewController: UIViewController {
             self.loadingLabel.text = "Loading..."
         })
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration + 0.1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration*0.9, execute: {
             self.animationView.alpha = 0.0
             self.loadingLabel.text = ""
             self.isLoading = false
@@ -98,55 +101,50 @@ class SniperShotViewController: UIViewController {
     @IBAction func fireButtonClicked(_ sender: Any) {
         if (!isLoading) {
             fire()
+            self.playSound()
         }
     }
     
     func fire() {
         self.animationView.alpha = 1.0
-//        self.animationView.animation
         self.animationView.stopAnimating()
         animationView.animationRepeatCount = 1
         self.animationView.startAnimating()
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-//            self.fireButton.alpha = 0.0
-//            self.animationView.alpha = 1.0
-//            self.animationView.startAnimating()
-//        })
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration + 2.2 - 1.0, execute: {
-//            print("done")
-//            self.finishFire()
-//        })
-//        playSound()
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration-0.1, execute: {
+            self.finishFire()
+        })
     }
     func finishFire() {
-        fireButton.alpha = 1.0
         animationView.alpha = 0.0
         animationView.stopAnimating()
-        //        stopSound()
     }
     
     var player: AVAudioPlayer?
     func playSound() {
-//        guard let url = Bundle.main.url(forResource: "mafiasound", withExtension: "mp3") else { return }
-//        do {
-//            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-//            try AVAudioSession.sharedInstance().setActive(true)
-//
-//            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
-//            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-//
-//            /* iOS 10 and earlier require the following line:
-//             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-//
-//            guard let player = player else { return }
-//
-//            player.play()
-//
-//        } catch let error {
-//            print(error.localizedDescription)
-//        }
+        print("play sound")
+        guard let url = Bundle.main.url(forResource: "mafiasound", withExtension: "mp3") else { return }
+        
+        print("got url")
+        do {
+            print("in do")
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            print("got av audio")
+            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            print("player setup done")
+            /* iOS 10 and earlier require the following line:
+             player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+            
+            guard let player = player else { return }
+            print("guard player")
+            player.play()
+            print("finished playing")
+
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
 }

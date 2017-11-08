@@ -13,6 +13,7 @@
 		5F8C29771FA8DE9700C6D4EF /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C29761FA8DE9700C6D4EF /* Building.swift */; };
 		5FE884AB1F8C3B0100A2569B /* HackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE884AA1F8C3B0100A2569B /* HackViewController.swift */; };
 		5FE884AD1F8C3D8C00A2569B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE884AC1F8C3D8C00A2569B /* CoreLocation.framework */; };
+		9F1DCB261FB3876A0014ADB5 /* mafiasound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F1DCB251FB3876A0014ADB5 /* mafiasound.mp3 */; };
 		9F26ACB91F716ED200327E45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F26ACB81F716ED200327E45 /* AppDelegate.swift */; };
 		9F26ACBB1F716ED200327E45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F26ACBA1F716ED200327E45 /* ViewController.swift */; };
 		9F26ACBE1F716ED200327E45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACBC1F716ED200327E45 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		5FE884AA1F8C3B0100A2569B /* HackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackViewController.swift; sourceTree = "<group>"; };
 		5FE884AC1F8C3D8C00A2569B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		90A8FE3EE5A1DDD3C0993D9F /* Pods-SpyVsSpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyVsSpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpyVsSpy/Pods-SpyVsSpy.release.xcconfig"; sourceTree = "<group>"; };
+		9F1DCB251FB3876A0014ADB5 /* mafiasound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mafiasound.mp3; sourceTree = "<group>"; };
 		9F26ACB51F716ED200327E45 /* SpyVsSpy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpyVsSpy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F26ACB81F716ED200327E45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F26ACBA1F716ED200327E45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				5F5902E11F8C634B00CB9831 /* StarRatingViewer.swift */,
 				FACC137D1FA9127200824F30 /* LogTableViewCell.swift */,
 				FACC13841FA9270B00824F30 /* LogsViewController.swift */,
+				9F1DCB251FB3876A0014ADB5 /* mafiasound.mp3 */,
 				FAA855D31FAAB94A004C2F68 /* HomeViewController.swift */,
 				FAA855D51FAAC662004C2F68 /* MainGameTabBarVController.swift */,
 			);
@@ -254,6 +257,7 @@
 				FAC19F2D1F75F9DB007A8600 /* GoogleService-Info.plist in Resources */,
 				9F26ACC01F716ED200327E45 /* Assets.xcassets in Resources */,
 				9F26ACBE1F716ED200327E45 /* Main.storyboard in Resources */,
+				9F1DCB261FB3876A0014ADB5 /* mafiasound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
