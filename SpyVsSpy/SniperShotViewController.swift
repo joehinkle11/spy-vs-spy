@@ -164,13 +164,16 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         updateAmmoDisplay()
         fireStatusLabel.text = "Recording..."
         
-        self.animationView.alpha = 1.0
-        self.animationView.stopAnimating()
+        animationView.alpha = 1.0
+        animationView.stopAnimating()
         animationView.animationRepeatCount = 1
-        self.animationView.startAnimating()
+        animationView.startAnimating()
+        
+        startRecording()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration-0.1, execute: {
             self.finishFire()
+            self.stopRecording()
         })
     }
     func finishFire() {
@@ -191,6 +194,10 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         videoFileOutput.stopRecording()
     }
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        
+        print("capture did finish")
+        print(output);
+        print(outputFileURL);
         
     }
     //----------------//
