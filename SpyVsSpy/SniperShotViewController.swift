@@ -10,19 +10,29 @@ import UIKit
 import AVFoundation
 import AudioToolbox
 
-class SniperShotViewController: UIViewController {
+class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
-    let captureSession = AVCaptureSession()
-    var captureDevice:AVCaptureDevice!
-    var previewLayer:CALayer!
     
+    // for live preview
+    private let captureSession = AVCaptureSession()
+    private var captureDevice:AVCaptureDevice!
+    private var previewLayer:CALayer!
+    
+    // for video recording
+    private let fileName = "temp.mp4"
+    private var filePath:URL!
+    private let videoFileOutput = AVCaptureMovieFileOutput()
+    private var shotTaken = false
+    
+    // for ui
     @IBOutlet weak var animationView: UIImageView!
     @IBOutlet weak var fireButton: UIButton!
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var hudView: UIView!
     @IBOutlet weak var muteButton: UIButton!
     
-    let animationDuration = 3.0
+    // animation
+    private let animationDuration = 3.0
     private var isLoading = true
     
     // screen settings which ought to be set, though defaults are given
@@ -32,6 +42,11 @@ class SniperShotViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // video recording setup
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        filePath = documentsURL.appendingPathComponent(fileName)
+        
+        // video preview setup
         captureSession.sessionPreset = AVCaptureSession.Preset.high
         let devices = AVCaptureDevice.devices()
         for device in devices {
@@ -45,6 +60,8 @@ class SniperShotViewController: UIViewController {
             }
         }
         
+        
+        // png sequence setup
         var imgListArray :[UIImage] = []
         for num in 0...80
         {
@@ -60,10 +77,10 @@ class SniperShotViewController: UIViewController {
             let image  = UIImage(named:strImageName)
             imgListArray.append(image!)
         }
-        
         animationView.animationImages = imgListArray
         animationView.animationDuration = animationDuration
         
+        // audio setup
         setupAudio()
         if (isMuted) {
             muteButton.setImage(UIImage(named:"ic_volume_off"), for: UIControlState.normal)
@@ -94,12 +111,16 @@ class SniperShotViewController: UIViewController {
         
         captureSession.startRunning()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-            self.fire()
+        self.loadingLabel.text = "Loading..."
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.animationView.alpha = 1.0
+            self.animationView.stopAnimating()
+            self.animationView.animationRepeatCount = 1
+            self.animationView.startAnimating()
             self.loadingLabel.text = "Loading..."
         })
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration*0.9, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration*0.9 + 1, execute: {
             self.animationView.alpha = 0.0
             self.loadingLabel.text = ""
             self.isLoading = false
@@ -112,9 +133,11 @@ class SniperShotViewController: UIViewController {
     
     @IBAction func fireButtonClicked(_ sender: Any) {
         if (!isLoading) {
-            fire()
-            if (!isMuted) {
-                self.playSound()
+            if (!shotTaken) {
+                fire()
+                if (!isMuted) {
+                    self.playSound()
+                }
             }
         }
     }
@@ -128,6 +151,8 @@ class SniperShotViewController: UIViewController {
     }
     
     func fire() {
+        shotTaken = true
+        
         self.animationView.alpha = 1.0
         self.animationView.stopAnimating()
         animationView.animationRepeatCount = 1
@@ -141,6 +166,23 @@ class SniperShotViewController: UIViewController {
         animationView.alpha = 0.0
         animationView.stopAnimating()
     }
+    
+    //----------------//
+    // file recording //
+    //----------------//
+    func startRecording() {
+        self.captureSession.addOutput(videoFileOutput)
+        
+        let recordingDelegate:AVCaptureFileOutputRecordingDelegate? = self
+        videoFileOutput.startRecording(to: filePath, recordingDelegate: recordingDelegate!)
+    }
+    func stopRecording() {
+        videoFileOutput.stopRecording()
+    }
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        
+    }
+    //----------------//
     
     var player: AVAudioPlayer?
     func setupAudio() {
