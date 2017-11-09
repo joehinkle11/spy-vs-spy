@@ -766,7 +766,11 @@
                     <navigationItem key="navigationItem" id="dxw-QJ-Rxc"/>
                     <connections>
                         <outlet property="animationView" destination="BUu-6c-sPQ" id="eGO-wi-s7Z"/>
+                        <outlet property="bulletView1" destination="aeo-9l-ehy" id="IZi-5K-qcL"/>
+                        <outlet property="bulletView2" destination="xN2-HE-W2B" id="WRM-c7-E8u"/>
+                        <outlet property="bulletView3" destination="6SO-gt-wer" id="Fkd-Iv-lsf"/>
                         <outlet property="fireButton" destination="m1p-qZ-hm8" id="eH6-dO-Ls8"/>
+                        <outlet property="fireStatusLabel" destination="SCq-GO-5iJ" id="UEt-JA-8Xx"/>
                         <outlet property="hudView" destination="yAa-G5-yHU" id="1u0-7E-cP9"/>
                         <outlet property="loadingLabel" destination="D7r-i9-27P" id="USK-tx-gne"/>
                         <outlet property="muteButton" destination="2as-YI-CpJ" id="2F7-M0-U92"/>

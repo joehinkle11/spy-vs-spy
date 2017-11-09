@@ -30,6 +30,10 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
     @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var hudView: UIView!
     @IBOutlet weak var muteButton: UIButton!
+    @IBOutlet weak var bulletView1: UIImageView!
+    @IBOutlet weak var bulletView2: UIImageView!
+    @IBOutlet weak var bulletView3: UIImageView!
+    @IBOutlet weak var fireStatusLabel: UILabel!
     
     // animation
     private let animationDuration = 3.0
@@ -37,6 +41,7 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
     
     // screen settings which ought to be set, though defaults are given
     var isMuted = false
+    var ammoAmount = 3
     
     
     override func viewDidLoad() {
@@ -60,6 +65,9 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
             }
         }
         
+        // setup ui
+        updateAmmoDisplay()
+        fireStatusLabel.text = "Tap screen to fire"
         
         // png sequence setup
         var imgListArray :[UIImage] = []
@@ -152,6 +160,9 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
     
     func fire() {
         shotTaken = true
+        ammoAmount = ammoAmount - 1
+        updateAmmoDisplay()
+        fireStatusLabel.text = "Recording..."
         
         self.animationView.alpha = 1.0
         self.animationView.stopAnimating()
@@ -183,6 +194,26 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         
     }
     //----------------//
+    
+    func updateAmmoDisplay() {
+        if (ammoAmount > 2) {
+            bulletView1.alpha = 1
+            bulletView2.alpha = 1
+            bulletView3.alpha = 1
+        } else if (ammoAmount > 1) {
+            bulletView1.alpha = 1
+            bulletView2.alpha = 1
+            bulletView3.alpha = 0
+        } else if (ammoAmount > 0) {
+            bulletView1.alpha = 1
+            bulletView2.alpha = 0
+            bulletView3.alpha = 0
+        } else {
+            bulletView1.alpha = 0
+            bulletView2.alpha = 0
+            bulletView3.alpha = 0
+        }
+    }
     
     var player: AVAudioPlayer?
     func setupAudio() {
