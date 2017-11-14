@@ -41,7 +41,6 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
             snapshot in
             var peopleInGame: [ProfileModel] = []
             if ((snapshot.value) != nil && snapshot.exists()) {
-            
                 let peopleIds = (snapshot.value as! NSDictionary).allKeys
                 
                 for id in peopleIds {
@@ -137,6 +136,7 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
         if (self.user != nil && self.user?.uid != nil) {
             game?.firebaseReference?.child("\(GameModel.playersKey)").child("\((self.user?.uid)!)").setValue(PlayerInGameModel(playerName: (self.user?.displayName)!).toDictionary(), withCompletionBlock: { (err, ref) in
                 self.userReference.child("\(String(describing: (self.user?.uid)!))/\(UserModel.currentGameKey)").setValue(self.game?.firebaseReference?.key)
+                BackendGameLogic.gameId = self.game?.firebaseReference?.key
             })
 
         }

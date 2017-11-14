@@ -8,14 +8,39 @@
 
 import UIKit
 
-class LogsViewController: UIViewController {
+class LogsViewController: UIViewController, UITableViewDataSource {
+    var logs: [LogDataModel] = []
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("viewdidload: ")
         // Do any additional setup after loading the view.
+        BackendGameLogic.getGameLogs { (gameLogs) in
+            self.logs = gameLogs
+            print("logs: \(self.logs.count)");
+            
+            self.tableView.reloadData()
+        }
+        
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("tableViewlogs: \(self.logs.count)");
+
+        return (self.logs.count)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "LogTableViewCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? LogTableViewCell
+        cell?.mainText.text = self.logs[indexPath.row].mainText
+        print("MAINTEXT \(cell?.mainText.text)")
+        
+        return cell!
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

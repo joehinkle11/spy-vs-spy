@@ -18,21 +18,21 @@ struct GameInfoModel {
     static let chatsKey = "chats"
     
     /// Values for the json
-    let logs: [String]
-    let locationsToHack: [String]
-    var chats: [String]
+    let logs: NSDictionary
+    let locationsToHack: NSDictionary
+    var chats: NSDictionary
     
     /* Initializer for instantiating a new object in code.
      */
     init() {
-        self.logs = []
-        self.locationsToHack = ["Woodward", "COED", "CHHS"] //TODO: 
-        self.chats = []
+        self.logs = NSDictionary()
+        self.locationsToHack = ["Woodward":true, "COED":true, "CHHS":true] //TODO:
+        self.chats = NSDictionary()
     }
     
     /* Initializer for instantiating a new object in code.
      */
-    init(logs: [String], locationsToHack: [String], chats: [String]) {
+    init(logs: NSDictionary, locationsToHack: NSDictionary, chats: NSDictionary) {
         self.logs = logs
         self.locationsToHack = locationsToHack
         self.chats = chats
@@ -42,17 +42,46 @@ struct GameInfoModel {
      */
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String: Any]
-        self.logs = snapshotValue[GameInfoModel.logsKey] as! [String]
-        self.locationsToHack = snapshotValue[GameInfoModel.locationsToHackKey] as! [String]
-        self.chats = snapshotValue[GameInfoModel.chatsKey] as! [String]
+        if ((snapshotValue[GameInfoModel.logsKey]) != nil) {
+            self.logs = snapshotValue[GameModel.playersKey] as! NSDictionary
+        } else {
+            self.logs = NSDictionary()
+        }
+        if ((snapshotValue[GameInfoModel.locationsToHackKey]) != nil) {
+            self.locationsToHack = snapshotValue[GameInfoModel.locationsToHackKey] as! NSDictionary
+        } else {
+            self.locationsToHack = NSDictionary()
+        }
+        if ((snapshotValue[GameInfoModel.chatsKey]) != nil) {
+            self.chats = snapshotValue[GameInfoModel.chatsKey] as! NSDictionary
+        } else {
+            self.chats = NSDictionary()
+        }
     }
     
     /* Initializer for instantiating an object received from Firebase.
      */
     init(dictionary: NSDictionary) {
-        self.logs = dictionary[GameInfoModel.logsKey] as! [String]
-        self.locationsToHack = dictionary[GameInfoModel.locationsToHackKey] as! [String]
-        self.chats = dictionary[GameInfoModel.chatsKey] as! [String]
+        if (dictionary[GameInfoModel.logsKey]  != nil) {
+            self.logs = dictionary[GameInfoModel.logsKey] as! NSDictionary
+
+        } else {
+            self.logs = NSDictionary()
+        }
+        if (dictionary[GameInfoModel.locationsToHackKey]  != nil) {
+            
+            self.locationsToHack = dictionary[GameInfoModel.locationsToHackKey] as! NSDictionary
+        } else {
+            
+            self.locationsToHack = NSDictionary()
+        }
+        if (dictionary[GameInfoModel.chatsKey]  != nil) {
+            
+            self.chats = dictionary[GameInfoModel.chatsKey] as! NSDictionary
+        } else {
+            
+            self.chats = NSDictionary()
+        }
     }
     
     /* Method to help updating values of an existing object.

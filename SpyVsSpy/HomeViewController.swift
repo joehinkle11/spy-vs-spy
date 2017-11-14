@@ -47,7 +47,7 @@ class HomeViewController: UIViewController {
     }
     @IBAction func testSnipePressed(_ sender: Any) {
         print("testSnipePressed")
-        BackendGameLogic.snipePlayer(playerId: "ys8Jbgjs1DPjU66nxNRe8FrPl3u1") { (result) in
+        BackendGameLogic.snipePlayer(playerId: "ys8Jbgjs1DPjU66nxNRe8FrPl3u1", playerName: "Candace Allison") { (result) in
             print("result: \(result)")
         }
 
