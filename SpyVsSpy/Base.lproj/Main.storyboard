@@ -477,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ciW-k3-320" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2684" y="-186"/>
+            <point key="canvasLocation" x="2684" y="-298"/>
         </scene>
         <!--User Profile-->
         <scene sceneID="aJU-wr-twJ">
@@ -547,6 +547,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="MainGameTabBarVController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dfv-Lf-ybm" customClass="MainGameTabBarVController" customModule="SpyVsSpy" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="sO8-Sl-3Ha"/>
+                    <size key="freeformSize" width="320" height="568"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="uFT-EF-fm9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -584,46 +585,126 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pun-Kl-yIp">
-                                <rect key="frame" x="129" y="373" width="62" height="30"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oJg-nE-CJb">
+                                <rect key="frame" x="1" y="126" width="318" height="393"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="testHack"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LocTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocTableViewCell" id="arn-Dc-HF7" customClass="LocTableViewCell" customModule="SpyVsSpy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="318" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="arn-Dc-HF7" id="nDd-Ow-k5v">
+                                            <rect key="frame" x="0.0" y="0.0" width="318" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJ1-Ay-RAO">
+                                                    <rect key="frame" x="15" y="11" width="288" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label_text" destination="uJ1-Ay-RAO" id="Agu-qn-jhz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <action selector="testHackPressed:" destination="BJO-Ul-T0h" eventType="touchUpInside" id="jZh-9Y-ZWH"/>
+                                    <outlet property="dataSource" destination="BJO-Ul-T0h" id="LvU-TE-G9u"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgO-0m-JuX">
-                                <rect key="frame" x="128" y="400" width="65" height="30"/>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VhG-SJ-MzT">
+                                <rect key="frame" x="0.0" y="64" width="318" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="testSnipe"/>
+                                <segments>
+                                    <segment title="Players"/>
+                                    <segment title="Buildings"/>
+                                </segments>
                                 <connections>
-                                    <action selector="testSnipePressed:" destination="BJO-Ul-T0h" eventType="touchUpInside" id="d8r-QG-dQU"/>
+                                    <action selector="indexChanged:" destination="BJO-Ul-T0h" eventType="valueChanged" id="lcS-oT-naN"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zF-bq-Nyl">
-                                <rect key="frame" x="110" y="438" width="101" height="30"/>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWq-q5-rDl">
+                                <rect key="frame" x="16" y="100" width="288" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="testGetPlayers"/>
-                                <connections>
-                                    <action selector="testGetPlayersPressed:" destination="BJO-Ul-T0h" eventType="touchUpInside" id="pMh-8Q-9Jc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13d-HS-X3e">
-                                <rect key="frame" x="78" y="476" width="164" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="testGetBuildingsToHack"/>
-                                <connections>
-                                    <action selector="testGetBuildingsPressed:" destination="BJO-Ul-T0h" eventType="touchUpInside" id="XC5-3P-cZ8"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="icons8-Globe Filled-25" id="HG4-6L-jyK"/>
+                    <connections>
+                        <outlet property="lbl_data" destination="qWq-q5-rDl" id="Zpr-fK-j6U"/>
+                        <outlet property="segment_control" destination="VhG-SJ-MzT" id="pbb-jW-H7Q"/>
+                        <outlet property="tableView" destination="oJg-nE-CJb" id="Rkk-0x-wBy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9MQ-GD-zP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2684.2666666666664" y="-905.01333333333332"/>
+            <point key="canvasLocation" x="2684" y="-1450"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ADO-vT-bqT">
+            <objects>
+                <viewController id="nIl-pL-f9M" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j6W-no-qIg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pyu-ho-r2n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kg9-7w-l9b">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EX6-EC-syP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="527"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pun-Kl-yIp">
+                                        <rect key="frame" x="129" y="182" width="62" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="testHack"/>
+                                        <connections>
+                                            <action selector="testHackPressed:" destination="BJO-Ul-T0h" eventType="touchUpInside" id="jZh-9Y-ZWH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgO-0m-JuX">
+                                        <rect key="frame" x="127" y="226" width="65" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="testSnipe"/>
+                                        <connections>
+                                            <action selector="testSnipePressed:" destination="BJO-Ul-T0h" eventType="touchUpInside" id="d8r-QG-dQU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zF-bq-Nyl">
+                                        <rect key="frame" x="109" y="273" width="101" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="testGetPlayers"/>
+                                        <connections>
+                                            <action selector="testGetPlayersPressed:" destination="BJO-Ul-T0h" eventType="touchUpInside" id="pMh-8Q-9Jc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13d-HS-X3e">
+                                        <rect key="frame" x="78" y="315" width="164" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="testGetBuildingsToHack"/>
+                                        <connections>
+                                            <action selector="testGetBuildingsPressed:" destination="BJO-Ul-T0h" eventType="touchUpInside" id="XC5-3P-cZ8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9uy-ER-upl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3289" y="-1463"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vCo-CI-p9O">

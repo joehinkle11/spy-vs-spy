@@ -11,6 +11,7 @@
 		5F5902E01F8C4C8900CB9831 /* StarRatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5902DF1F8C4C8900CB9831 /* StarRatingControl.swift */; };
 		5F5902E21F8C634B00CB9831 /* StarRatingViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5902E11F8C634B00CB9831 /* StarRatingViewer.swift */; };
 		5F8C29771FA8DE9700C6D4EF /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8C29761FA8DE9700C6D4EF /* Building.swift */; };
+		5F9CD0E41FC7D4BE0065759B /* LocTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9CD0E31FC7D4BE0065759B /* LocTableViewCell.swift */; };
 		5FE884AB1F8C3B0100A2569B /* HackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE884AA1F8C3B0100A2569B /* HackViewController.swift */; };
 		5FE884AD1F8C3D8C00A2569B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE884AC1F8C3D8C00A2569B /* CoreLocation.framework */; };
 		9F1DCB261FB3876A0014ADB5 /* mafiasound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F1DCB251FB3876A0014ADB5 /* mafiasound.mp3 */; };
@@ -46,6 +47,7 @@
 		5F5902DF1F8C4C8900CB9831 /* StarRatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingControl.swift; sourceTree = "<group>"; };
 		5F5902E11F8C634B00CB9831 /* StarRatingViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingViewer.swift; sourceTree = "<group>"; };
 		5F8C29761FA8DE9700C6D4EF /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
+		5F9CD0E31FC7D4BE0065759B /* LocTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocTableViewCell.swift; sourceTree = "<group>"; };
 		5FE884AA1F8C3B0100A2569B /* HackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackViewController.swift; sourceTree = "<group>"; };
 		5FE884AC1F8C3D8C00A2569B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		90A8FE3EE5A1DDD3C0993D9F /* Pods-SpyVsSpy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpyVsSpy.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpyVsSpy/Pods-SpyVsSpy.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				FACC13841FA9270B00824F30 /* LogsViewController.swift */,
 				9F1DCB251FB3876A0014ADB5 /* mafiasound.mp3 */,
 				FAA855D31FAAB94A004C2F68 /* HomeViewController.swift */,
+				5F9CD0E31FC7D4BE0065759B /* LocTableViewCell.swift */,
 				FAA855D51FAAC662004C2F68 /* MainGameTabBarVController.swift */,
 			);
 			path = SpyVsSpy;
@@ -357,6 +360,7 @@
 				FAA855D61FAAC662004C2F68 /* MainGameTabBarVController.swift in Sources */,
 				FA326BF71F92C050007160BE /* GameModel.swift in Sources */,
 				FAF1BC131FA8FA170068A90E /* BackendGameLogic.swift in Sources */,
+				5F9CD0E41FC7D4BE0065759B /* LocTableViewCell.swift in Sources */,
 				FA583D431F783AB600F344CE /* ViewGamesViewController.swift in Sources */,
 				FA154DD11F9533B3007BA2F5 /* GameInfoModel.swift in Sources */,
 			);
