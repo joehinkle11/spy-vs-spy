@@ -57,6 +57,12 @@ class HomeViewController: UIViewController {
         BackendGameLogic.listOfLocationsToHack { (result) in
             print("result: \(result)")
         }
-
+//        print("test canmakemove")
+//        BackendGameLogic.hasGameExpired { (isError, hasGameExpired) in
+//            print("isError")
+//            print(isError)
+//            print("hasGameExpired")
+//            print(hasGameExpired)
+//        }
     }
 }

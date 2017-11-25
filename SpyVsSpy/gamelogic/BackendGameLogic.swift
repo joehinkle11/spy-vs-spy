@@ -105,7 +105,7 @@ class BackendGameLogic {
                         var players: [String: PlayerInGameModel] = [:]
                         for child in snapshot.children {
                             if (!((child as! DataSnapshot).childSnapshot(forPath: PlayerInGameModel.isDeadKey).value != nil) && !((child as! DataSnapshot).childSnapshot(forPath: PlayerInGameModel.isSniperKey).value != nil)) {
-                                completion(BackendGameLogic.NO_ONE_WON)
+                                
                                 didAnyoneWin = false
                             }
                             players[(child as! DataSnapshot).key] = PlayerInGameModel(dictionary: (child as! DataSnapshot).value as! NSDictionary)
@@ -115,6 +115,16 @@ class BackendGameLogic {
                         if (didAnyoneWin) {
                             
                             completion(BackendGameLogic.SNIPERS_WON)
+                        } else {
+                            BackendGameLogic.hasGameExpired(completion: { (isError, hasGameExpired) in
+                                if (isError) {
+                                    completion(BackendGameLogic.ERROR)
+                                } else if(hasGameExpired) {
+                                    completion(BackendGameLogic.SNIPERS_WON);
+                                } else {
+                                    completion(BackendGameLogic.NO_ONE_WON)
+                                }
+                            })
                         }
                     } else {
                         print("no listOfLocationsToHack found")
@@ -254,6 +264,33 @@ class BackendGameLogic {
             } else {
                 completion(true)
             }
+        }
+    }
+    
+    static func hasGameExpired(completion: @escaping (_ isError:Bool,_ hasGameExpired: Bool) -> Void) {
+        BackendGameLogic.gameReference.child("\(BackendGameLogic.gameId!)/\(GameModel.startInfoKey)/\(GameStartInfo.timeKey)").observeSingleEvent(of: .value, with: { (snapshot) in
+            print("snapchat value is \(snapshot.value)")
+            if ((snapshot.value) != nil && snapshot.exists()) {
+                
+                print(snapshot.value!)
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+                let isStartDate = dateFormatter.date(from: snapshot.value! as! String)
+                let endDate = Calendar.current.date(byAdding: .day, value: 7, to: isStartDate!)
+                if (Date() > endDate! ) {
+                    completion(false, true)
+                } else {
+                    completion(false, false)
+                }
+            } else {
+                print("no listOfLocationsToHack found")
+                completion(true, false)
+
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+            completion(true, false)
         }
     }
     
