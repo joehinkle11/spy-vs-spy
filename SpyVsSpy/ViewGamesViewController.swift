@@ -113,7 +113,8 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
         let date = self.dateFormatter.date(from: currentGame.startInfo.time)
         let hour = self.calendar.component(.hour, from: date!)
         let minutes = self.calendar.component(.minute, from: date!)
-        cell?.dayLabel.text =  "\(dateFormatter.weekdaySymbols[Calendar.current.component(.weekday, from:  date!)])"
+        let weekday = Calendar.current.component(.weekday, from:  date!)-1
+        cell?.dayLabel.text =  "\(dateFormatter.weekdaySymbols[weekday])"
         cell?.timeLabel?.text = "\(hour > 12 ? hour-12 : hour):\(minutes)\(hour > 12 ? "PM" : "AM")"
         cell?.numberOfPlayersJoinedLabel?.text = "\((currentGame.players ).count)/10"
         cell?.gameNameLabel?.text = currentGame.startInfo.gameName

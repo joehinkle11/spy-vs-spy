@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -212,7 +213,7 @@
                                 </state>
                                 <connections>
                                     <action selector="joinButtonClicked:" destination="tAh-JS-pb6" eventType="touchUpInside" id="cla-vb-YhU"/>
-                                    <segue destination="dfv-Lf-ybm" kind="push" id="Jhz-vB-cx5"/>
+                                    <segue destination="dfv-Lf-ybm" kind="modal" id="O8h-Jc-d8r"/>
                                 </connections>
                             </button>
                         </subviews>
