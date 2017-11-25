@@ -26,7 +26,7 @@ struct GameInfoModel {
      */
     init() {
         self.logs = NSDictionary()
-        self.locationsToHack = ["Woodward":true, "COED":true, "CHHS":true] //TODO:
+        self.locationsToHack = ["Woodward":true, "COED":true, "CHHS":true,"Home":true] //TODO:
         self.chats = NSDictionary()
     }
     
