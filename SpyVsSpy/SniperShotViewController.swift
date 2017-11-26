@@ -204,7 +204,8 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
         appDelegate.window?.rootViewController = initialViewController
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ShotReviewViewController") as! SniperShotViewController
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ShotReviewViewController") as! ShotReviewViewController
+        newViewController.filePath = filePath
         initialViewController.present(newViewController, animated: true, completion: nil)
         
         

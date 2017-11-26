@@ -52,6 +52,17 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         initialViewController.present(newViewController, animated: true, completion: nil)
     }
     
+    
+    @IBAction func testViewShot(_ sender: Any) {
+        let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
+        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        appDelegate.window?.rootViewController = initialViewController
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ShotReviewViewController") as! ShotReviewViewController
+        initialViewController.present(newViewController, animated: true, completion: nil)
+    }
+    
+    
     func goToNextScreenIfLoggedIn() {
         BackendGameLogic.getGameId(completion: { (result) in
             print("result: \(result)")
