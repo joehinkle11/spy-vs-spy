@@ -38,6 +38,16 @@ class BackendGameLogic {
                         //Get user value
                         BackendGameLogic.gameId = (snapshot.value as? String)!
                         print("gameId found \(BackendGameLogic.gameId!)");
+//                        BackendGameLogic.addGame(daysOffset: -7, completion: { (_) in
+//                        })
+//                        BackendGameLogic.addGameSevenDaysFromNow(daysOffset: 0, completion: { (_) in
+//                        })
+//                        BackendGameLogic.addGameSevenDaysFromNow(daysOffset: 7, completion: { (_) in
+//                        })
+//                        BackendGameLogic.addGameSevenDaysFromNow(daysOffset: 14, completion: { (_) in
+//                        })
+//                        BackendGameLogic.addGameSevenDaysFromNow(daysOffset: 7*3, completion: { (_) in
+//                        })
                         completion(BackendGameLogic.gameId!)
                     } else {
                         print("no gameId found")
@@ -50,6 +60,7 @@ class BackendGameLogic {
                 print("user not found \(String(describing: BackendGameLogic.user?.uid))");
                 BackendGameLogic.user = nil
                 completion(BackendGameLogic.no_user)
+
                 
             }
         }
@@ -94,7 +105,7 @@ class BackendGameLogic {
                         var players: [String: PlayerInGameModel] = [:]
                         for child in snapshot.children {
                             if (!((child as! DataSnapshot).childSnapshot(forPath: PlayerInGameModel.isDeadKey).value != nil) && !((child as! DataSnapshot).childSnapshot(forPath: PlayerInGameModel.isSniperKey).value != nil)) {
-                                completion(BackendGameLogic.NO_ONE_WON)
+                                
                                 didAnyoneWin = false
                             }
                             players[(child as! DataSnapshot).key] = PlayerInGameModel(dictionary: (child as! DataSnapshot).value as! NSDictionary)
@@ -104,6 +115,16 @@ class BackendGameLogic {
                         if (didAnyoneWin) {
                             
                             completion(BackendGameLogic.SNIPERS_WON)
+                        } else {
+                            BackendGameLogic.hasGameExpired(completion: { (isError, hasGameExpired) in
+                                if (isError) {
+                                    completion(BackendGameLogic.ERROR)
+                                } else if(hasGameExpired) {
+                                    completion(BackendGameLogic.SNIPERS_WON);
+                                } else {
+                                    completion(BackendGameLogic.NO_ONE_WON)
+                                }
+                            })
                         }
                     } else {
                         print("no listOfLocationsToHack found")
@@ -118,6 +139,33 @@ class BackendGameLogic {
             print(error.localizedDescription)
             completion(BackendGameLogic.ERROR)
         }
+    }
+    
+    static func addGameLog(message: String, completion: @escaping (_ isComplete: Bool) -> Void) {
+        BackendGameLogic.gameReference.child("\(BackendGameLogic.gameId!)/\(GameModel.gameInfoKey)/\(GameInfoModel.logsKey)").childByAutoId().setValue(LogDataModel(mainText: message, videoName: "", gameInfo: "").toDictionary()) { (error, ref) in
+            if ((error) != nil) {
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
+    static func getGameLogs(completion: @escaping (_ isComplete: [LogDataModel]) -> Void) {
+        BackendGameLogic.gameReference.child("\(BackendGameLogic.gameId!)/\(GameModel.gameInfoKey)/\(GameInfoModel.logsKey)").observe(.value, with: {
+            snapshot in
+            var peopleInGame: [ProfileModel] = []
+            if ((snapshot.value) != nil && snapshot.exists()) {
+                
+                let values = (snapshot.value as! NSDictionary).allValues
+                var gameLogs:[LogDataModel] = []
+                for value in values {
+                    gameLogs.append(LogDataModel(dictionary: value as! NSDictionary))
+                }
+                completion(gameLogs)
+            }
+        })
+    
     }
 
     /// Gets the people
@@ -156,14 +204,15 @@ class BackendGameLogic {
     /// - Parameter completion: An empty or full list of strings of the name of the buildings left to
     /// hacked
     static func listOfLocationsToHack(completion: @escaping (_ isComplete: [String]) -> Void) {
+        print("\(BackendGameLogic.gameId!)/\(GameModel.gameInfoKey)/\(GameInfoModel.locationsToHackKey)")
         BackendGameLogic.gameReference.child("\(BackendGameLogic.gameId!)/\(GameModel.gameInfoKey)/\(GameInfoModel.locationsToHackKey)").observeSingleEvent(of: .value, with: { (snapshot) in
-            
+            print("snapchat value is \(snapshot.value)")
             if ((snapshot.value) != nil && snapshot.exists()) {
                 //Get user value
-                var locationsToHack = (snapshot.value as? [String])!
+                var locationsToHack = (snapshot.value as? NSDictionary)?.allKeys
                 print("found locations to hack")
                 print(locationsToHack)
-                completion(locationsToHack)
+                completion(locationsToHack as! [String])
             } else {
                 print("no listOfLocationsToHack found")
                 completion([])
@@ -173,12 +222,14 @@ class BackendGameLogic {
         }
     }
 
-    static func snipePlayer(playerId: String, completion: @escaping (_ isComplete: Bool) -> Void) {
+    static func snipePlayer(playerId: String, playerName: String, completion: @escaping (_ isComplete: Bool) -> Void) {
         BackendGameLogic.gameReference.child("\(BackendGameLogic.gameId!)/\(GameModel.playersKey)/\(playerId)/\(PlayerInGameModel.isDeadKey)").setValue(true) { (error, ref) in
             if ((error) != nil) {
                 completion(false)
             } else {
-                completion(true)
+                BackendGameLogic.addGameLog(message: "\(playerName) has been sniped.", completion: { (isSuccesfull) in
+                    completion(isSuccesfull)
+                })
             }
         }
     }
@@ -188,8 +239,59 @@ class BackendGameLogic {
             if ((error) != nil) {
                 completion(false)
             } else {
+                BackendGameLogic.addGameLog(message: "\(building) has been hacked.", completion: { (isSuccesfull) in
+                    completion(isSuccesfull)
+                })
+            }
+        }
+    }
+    
+    //    Adds a game 7 days from now w/ offset of daysOffset days at 12:00
+    static func addGameSevenDaysFromNow(daysOffset: Int, completion: @escaping (_ isComplete: Bool) -> Void) {
+        let key = BackendGameLogic.gameReference.childByAutoId().key
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+
+        //        Set starting date as 7 days from now at 12:00
+        let sevenDaysFromNow = (Calendar.current as NSCalendar).date(byAdding: .day, value: (7+daysOffset), to: Date(), options: [])!
+        var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: sevenDaysFromNow)
+        components.hour = 12
+        components.minute = 0
+        let startingTime = dateFormatter.string(from: Calendar.current.date(from: components)!)
+        BackendGameLogic.gameReference.child(key).setValue(GameModel(startInfo: GameStartInfo(time: startingTime, gameName: "Team Orange"), players: NSDictionary(), gameInfo: GameInfoModel()).toDictionary()) { (error, ref) in
+            if ((error) != nil) {
+                completion(false)
+            } else {
                 completion(true)
             }
         }
     }
+    
+    static func hasGameExpired(completion: @escaping (_ isError:Bool,_ hasGameExpired: Bool) -> Void) {
+        BackendGameLogic.gameReference.child("\(BackendGameLogic.gameId!)/\(GameModel.startInfoKey)/\(GameStartInfo.timeKey)").observeSingleEvent(of: .value, with: { (snapshot) in
+            print("snapchat value is \(snapshot.value)")
+            if ((snapshot.value) != nil && snapshot.exists()) {
+                
+                print(snapshot.value!)
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+                let isStartDate = dateFormatter.date(from: snapshot.value! as! String)
+                let endDate = Calendar.current.date(byAdding: .day, value: 7, to: isStartDate!)
+                if (Date() > endDate! ) {
+                    completion(false, true)
+                } else {
+                    completion(false, false)
+                }
+            } else {
+                print("no listOfLocationsToHack found")
+                completion(true, false)
+
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+            completion(true, false)
+        }
+    }
+    
 }

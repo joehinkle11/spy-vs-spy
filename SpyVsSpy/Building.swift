@@ -52,11 +52,11 @@ class building
         /*COED*/
         //Region 1
         let coed_center1 = CLLocationCoordinate2DMake(35.307648261185712, -80.733926306846982)
-        let coed_region1 = CLCircularRegion(center: coed_center1, radius: 50, identifier: "College of Education1")
+        let coed_region1 = CLCircularRegion(center: coed_center1, radius: 50, identifier: "COED1")
         
         //Region 2
         let coed_center2 = CLLocationCoordinate2DMake(35.307402285189291, -80.733857970119843)
-        let coed_region2 = CLCircularRegion(center: coed_center2, radius: 50, identifier: "College of Education2")
+        let coed_region2 = CLCircularRegion(center: coed_center2, radius: 50, identifier: "COED2")
         
         //Append all to array
         buildings.append(coed_region1)
@@ -66,13 +66,13 @@ class building
         print("Created COED")
 
         /*APARTMENT*/ //Testing purposes only
-        let apartment_center = CLLocationCoordinate2DMake(35.292231878298608, -80.729466648847534)
-        let apartment_region = CLCircularRegion(center: apartment_center, radius: 20, identifier: "Apartment")
+        let apartment_center = CLLocationCoordinate2DMake(34.874541107597643, -80.382753498927116)
+        let apartment_region = CLCircularRegion(center: apartment_center, radius: 20, identifier: "Home")
         
         //Append to array
         buildings.append(apartment_region)
         
         //Print message to console
-        print("Created Apartment")
+        print("Created Home")
     }
 }

@@ -34,6 +34,14 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
     let checkImage = UIImage(named: "checkmark")
     let xImage = UIImage(named: "redX")
     
+    //Create hackable variable
+    var hackable: Bool = false //To begin
+    var hack_locs: [String] = []
+    
+    //Create region values
+    var current_loc: CLRegion = CLRegion()
+    var current_name: String = ""
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -47,7 +55,7 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         hackbtn.backgroundColor = UIColor.red
         hackbtn.setTitle("HACK", for: .normal)
         hackbtn.setTitleColor(UIColor.white, for: .normal)
-        //hackbtn.isHidden = true
+        hackbtn.isHidden = true
         
         //Hide progress bar
         progressbar.isHidden = true
@@ -96,7 +104,7 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         for region in manager.monitoredRegions
         {
             guard let circular_region = region as? CLCircularRegion, circular_region.contains(coordinate) == true
-                else{ self.locationManager(manager, didExitRegion: region); continue}
+                else{self.locationManager(manager, didExitRegion: region); continue}
             self.locationManager(manager, didEnterRegion: region)
             break;
         }
@@ -125,17 +133,41 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
         
-        if (hack_img.image == xImage) //Red X - Not in range/Already hacked
+        //Set values to current loc
+        current_loc = region
+        current_name = name
+        
+        BackendGameLogic.listOfLocationsToHack
         {
-            hack_img.isHidden = true
+            (result) in self.hack_locs = result
+        }
+        
+        for building in hack_locs
+        {
+            if(building == name)
+            {
+                //print("Hackable Location Found")
+                hackable = true
+                break
+            }
+            else
+            {
+                hackable = false
+            }
+        }
+        
+        if (hackable == true) //Hackable (In list of buildings to hack)
+        {
             hackbtn.isHidden = false
+            hack_img.isHidden = true //Hide X
             hackcomplete.isHidden = true
         }
-        else if(hack_img.image == checkImage) //Just hacked
+        else if(hackable == false) //Not hackable (Not in list)
         {
             hackbtn.isHidden = true
+            hack_img.image = self.checkImage
             hack_img.isHidden = false
-            hackcomplete.isHidden = true
+            hackcomplete.isHidden = false
         }
         
         //Rename label
@@ -148,6 +180,23 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         hack_img.image = xImage
         hack_img.isHidden = false
         hackbtn.isHidden = true
+        hackcomplete.isHidden = true
+        
+        //Check if the region exited matches the current region
+        //TO RESET PROGRESS IF USER EXITS REGION
+        /*
+        if(region == nil)
+        {
+            //Disable progress bar
+            progressbar.isHidden = true
+            
+            //Stop timer
+            timer.invalidate()
+            
+            //Reset seconds  and time
+            seconds = 60
+            time = 0
+        }*/
     }
     
     @IBAction func start_hacking(_ sender: Any)
@@ -162,7 +211,7 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(HackViewController.updateTimer), userInfo: nil, repeats: true)
     }
  
-    @objc func updateTimer()
+    @objc func updateTimer(region: CLRegion)
     {
         //Time
         time = time + 0.01667
@@ -190,6 +239,11 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
             hackbtn.isHidden = true
             hack_img.image = checkImage
             hack_img.isHidden = false
+            
+            //Set location as hacked in DB
+            BackendGameLogic.hackBuilding(building: current_name) {(result) in
+                print("Hacked: \(result)")
+            }
             
             //Reset timer value
             seconds = 60

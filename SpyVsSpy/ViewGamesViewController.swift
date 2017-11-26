@@ -19,6 +19,7 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
     var sectionHeaders: [String] = []
     let dateFormatter = DateFormatter()
     let calendar = Calendar.current
+    let maxRowsInSection = 7
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +38,15 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
             var items: [GameModel] = []
             var gamesPerHeaderIndex = 0
             var header = ""
+            self.sectionHeaders = []
+            self.myGamesList = []
             var lastGame: GameModel? = nil
             
             for item in snapshot.children {
                 let game = GameModel(snapshot: item as! DataSnapshot)
                 items.append(game)
                 lastGame = game
-                if (gamesPerHeaderIndex >= 7) {
+                if (gamesPerHeaderIndex >= self.maxRowsInSection) {
                     let dateOne = self.dateFormatter.date(from: game.startInfo.time)
                     let month:String = self.dateFormatter.monthSymbols[Calendar.current.component(.month, from:  dateOne!)-1]
                     let index = month.index(month.startIndex, offsetBy: 3)
@@ -60,7 +63,7 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
                     gamesPerHeaderIndex += 1
                 }
             }
-            if (gamesPerHeaderIndex < 7 && gamesPerHeaderIndex > 0) {
+            if (gamesPerHeaderIndex < self.maxRowsInSection && gamesPerHeaderIndex > 0) {
                 let dateOne = self.dateFormatter.date(from: (lastGame?.startInfo.time)!)
                 let month:String = self.dateFormatter.monthSymbols[Calendar.current.component(.month, from:  dateOne!)-1]
                 let index = month.index(month.startIndex, offsetBy: 3)
@@ -91,20 +94,30 @@ class ViewGamesViewController: UIViewController, UITableViewDataSource {
     
     //set # of rows in the table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myGamesList.count
+        if (((section+1) * maxRowsInSection) < myGamesList.count) {
+            return maxRowsInSection
+        } else {
+            return myGamesList.count - ((section) * maxRowsInSection)
+        }
     }
     
     //Add each cell into the table here
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("indexPath.row + (indexPath.section * self.maxRowsInSection)")
+        print("\(indexPath.row + (indexPath.section * self.maxRowsInSection))")
+        print("\(indexPath.section)")
+    
+        let currentGame = myGamesList[indexPath.row + (indexPath.section * self.maxRowsInSection)]
         let cellIdentifier = "ViewGamesTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ViewGamesTableViewCell
-        let date = self.dateFormatter.date(from: myGamesList[indexPath.row].startInfo.time)
+        let date = self.dateFormatter.date(from: currentGame.startInfo.time)
         let hour = self.calendar.component(.hour, from: date!)
         let minutes = self.calendar.component(.minute, from: date!)
-        cell?.dayLabel.text =  "\(dateFormatter.weekdaySymbols[Calendar.current.component(.weekday, from:  date!)])"
+        let weekday = Calendar.current.component(.weekday, from:  date!)-1
+        cell?.dayLabel.text =  "\(dateFormatter.weekdaySymbols[weekday])"
         cell?.timeLabel?.text = "\(hour > 12 ? hour-12 : hour):\(minutes)\(hour > 12 ? "PM" : "AM")"
-        cell?.numberOfPlayersJoinedLabel?.text = "\((myGamesList[indexPath.row].players ).count)/10"
-        cell?.gameNameLabel?.text = myGamesList[indexPath.row].startInfo.gameName
+        cell?.numberOfPlayersJoinedLabel?.text = "\((currentGame.players ).count)/10"
+        cell?.gameNameLabel?.text = currentGame.startInfo.gameName
 
         return cell!
     }

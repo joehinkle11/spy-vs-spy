@@ -39,6 +39,13 @@ struct LogDataModel {
         self.videoName = snapshotValue[LogDataModel.videoNameKey] as! String
         self.firebaseReference = snapshot.ref
     }
+    /* Initializer for instantiating an object received from Firebase.
+     */
+    init(dictionary: NSDictionary) {
+        self.mainText = dictionary[LogDataModel.mainTextKey] as! String
+        self.videoName = dictionary[LogDataModel.videoNameKey] as! String
+        self.firebaseReference = nil
+    }
     
     /* Method to help updating values of an existing object.
      */
