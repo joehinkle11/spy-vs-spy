@@ -20,6 +20,7 @@
 		9F26ACC01F716ED200327E45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACBF1F716ED200327E45 /* Assets.xcassets */; };
 		9F26ACC31F716ED200327E45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACC11F716ED200327E45 /* LaunchScreen.storyboard */; };
 		9F385C001F82B12300797DD2 /* SpecialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F385BFF1F82B12300797DD2 /* SpecialViewController.swift */; };
+		9F7A357C1FB429B700502A2D /* ShotReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7A357B1FB429B700502A2D /* ShotReviewViewController.swift */; };
 		9FB129F81FB20C5300FE69AB /* SniperShotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB129F71FB20C5300FE69AB /* SniperShotViewController.swift */; };
 		FA154DCF1F952F8F007BA2F5 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA154DCE1F952F8F007BA2F5 /* ProfileModel.swift */; };
 		FA154DD11F9533B3007BA2F5 /* GameInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA154DD01F9533B3007BA2F5 /* GameInfoModel.swift */; };
@@ -58,6 +59,7 @@
 		9F26ACC21F716ED200327E45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F26ACC41F716ED200327E45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F385BFF1F82B12300797DD2 /* SpecialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialViewController.swift; sourceTree = "<group>"; };
+		9F7A357B1FB429B700502A2D /* ShotReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotReviewViewController.swift; sourceTree = "<group>"; };
 		9FB129F71FB20C5300FE69AB /* SniperShotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SniperShotViewController.swift; sourceTree = "<group>"; };
 		FA154DCE1F952F8F007BA2F5 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		FA154DD01F9533B3007BA2F5 /* GameInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoModel.swift; sourceTree = "<group>"; };
@@ -140,13 +142,14 @@
 				9F26ACC11F716ED200327E45 /* LaunchScreen.storyboard */,
 				FAC19F2C1F75F9D8007A8600 /* GoogleService-Info.plist */,
 				9F26ACC41F716ED200327E45 /* Info.plist */,
-				9FB129F71FB20C5300FE69AB /* SniperShotViewController.swift */,
 				5F5902E11F8C634B00CB9831 /* StarRatingViewer.swift */,
 				FACC137D1FA9127200824F30 /* LogTableViewCell.swift */,
 				FACC13841FA9270B00824F30 /* LogsViewController.swift */,
 				9F1DCB251FB3876A0014ADB5 /* mafiasound.mp3 */,
 				FAA855D31FAAB94A004C2F68 /* HomeViewController.swift */,
 				FAA855D51FAAC662004C2F68 /* MainGameTabBarVController.swift */,
+				9FB129F71FB20C5300FE69AB /* SniperShotViewController.swift */,
+				9F7A357B1FB429B700502A2D /* ShotReviewViewController.swift */,
 			);
 			path = SpyVsSpy;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				FA154DD31F9569A2007BA2F5 /* UserModel.swift in Sources */,
 				FACC13801FA9151500824F30 /* PlayerInGameModel.swift in Sources */,
 				9F385C001F82B12300797DD2 /* SpecialViewController.swift in Sources */,
+				9F7A357C1FB429B700502A2D /* ShotReviewViewController.swift in Sources */,
 				5FE884AB1F8C3B0100A2569B /* HackViewController.swift in Sources */,
 				FAA855D61FAAC662004C2F68 /* MainGameTabBarVController.swift in Sources */,
 				FA326BF71F92C050007160BE /* GameModel.swift in Sources */,

@@ -174,6 +174,7 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration-0.1, execute: {
             self.finishFire()
             self.stopRecording()
+            self.fireStatusLabel.text = "Done! Loading review..."
         })
     }
     func finishFire() {
@@ -198,6 +199,16 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         print("capture did finish")
         print(output);
         print(outputFileURL);
+        
+        let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
+        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        appDelegate.window?.rootViewController = initialViewController
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ShotReviewViewController") as! SniperShotViewController
+        initialViewController.present(newViewController, animated: true, completion: nil)
+        
+        
+        
         
     }
     //----------------//
