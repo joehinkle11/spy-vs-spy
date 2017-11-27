@@ -88,9 +88,9 @@ class ShotReviewViewController: UIViewController {
             self.isLoading = false
             self.view.bringSubview(toFront: self.animationView)
             self.view.bringSubview(toFront: self.hudView)
-            self.fire()
             // play video
             player.play()
+            self.fire()
         })
     }
     
@@ -109,6 +109,10 @@ class ShotReviewViewController: UIViewController {
         animationView.stopAnimating()
         animationView.animationRepeatCount = 1
         animationView.startAnimating()
+        
+        if (!isMuted) {
+            self.playSound()
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration-0.1, execute: {
             self.finishFire()

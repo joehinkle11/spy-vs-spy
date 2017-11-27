@@ -43,24 +43,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     @IBAction func enrollButtonClicked(_ sender: Any) {
         goToNextScreenIfLoggedIn()
     }
-    @IBAction func testTakenShotClicked(_ sender: Any) {
-        let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
-        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        appDelegate.window?.rootViewController = initialViewController
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "SniperShotViewController") as! SniperShotViewController
-        initialViewController.present(newViewController, animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func testViewShot(_ sender: Any) {
-        let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
-        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        appDelegate.window?.rootViewController = initialViewController
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ShotReviewViewController") as! ShotReviewViewController
-        initialViewController.present(newViewController, animated: true, completion: nil)
-    }
     
     
     func goToNextScreenIfLoggedIn() {
