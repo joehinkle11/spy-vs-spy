@@ -206,6 +206,7 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "ShotReviewViewController") as! ShotReviewViewController
         newViewController.filePath = filePath
+        newViewController.isMuted = isMuted
         initialViewController.present(newViewController, animated: true, completion: nil)
         
         
