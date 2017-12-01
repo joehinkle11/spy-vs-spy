@@ -751,20 +751,20 @@
                                             <constraint firstAttribute="height" constant="106" id="BpB-G5-2oT"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:aeo-9l-ehy:image" translatesAutoresizingMaskIntoConstraints="NO" id="aeo-9l-ehy">
-                                        <rect key="frame" x="67" y="4" width="25" height="42"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="imageView:aeo-9l-ehy:image" translatesAutoresizingMaskIntoConstraints="NO" id="aeo-9l-ehy">
+                                        <rect key="frame" x="125" y="4" width="25" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="paM-gc-EaT"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:aeo-9l-ehy:image" translatesAutoresizingMaskIntoConstraints="NO" id="xN2-HE-W2B">
-                                        <rect key="frame" x="91" y="4" width="25" height="42"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="imageView:aeo-9l-ehy:image" translatesAutoresizingMaskIntoConstraints="NO" id="xN2-HE-W2B">
+                                        <rect key="frame" x="149" y="4" width="25" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="bnJ-C8-JIq"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:aeo-9l-ehy:image" translatesAutoresizingMaskIntoConstraints="NO" id="6SO-gt-wer">
-                                        <rect key="frame" x="114" y="4" width="25" height="42"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="imageView:aeo-9l-ehy:image" translatesAutoresizingMaskIntoConstraints="NO" id="6SO-gt-wer">
+                                        <rect key="frame" x="172" y="4" width="25" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Kwd-Az-K0d"/>
                                         </constraints>
@@ -782,8 +782,8 @@
                                             <action selector="muteButtonClicked:" destination="nbq-K6-gje" eventType="touchUpInside" id="Zqt-cT-JC5"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ammo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0g-c3-wtq">
-                                        <rect key="frame" x="8" y="15" width="62" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ammo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0g-c3-wtq">
+                                        <rect key="frame" x="66" y="15" width="62" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="62" id="Lbx-hR-OK8"/>
                                         </constraints>
@@ -798,6 +798,34 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" red="0.93080068005181349" green="0.045926024859751224" blue="0.0088797101522074522" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sound On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZN-4D-1Io">
+                                        <rect key="frame" x="257" y="53" width="76" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FU3-No-a9S">
+                                        <rect key="frame" x="2" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="4LP-bo-d2D"/>
+                                            <constraint firstAttribute="width" constant="50" id="RJa-iq-oAl"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" image="violenceoff">
+                                            <color key="titleShadowColor" red="0.070511206260000001" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="muteButtonClicked:" destination="nbq-K6-gje" eventType="touchUpInside" id="Gs1-ID-8b4"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Violence Off" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KjK-pU-9GO">
+                                        <rect key="frame" x="-11" y="53" width="76" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -2223,6 +2251,7 @@ AFYAAAAAAAAAAAAAAAAAARpuA
         <image name="mafia_00027" width="960" height="540"/>
         <image name="mafia_00058" width="960" height="540"/>
         <image name="mask" width="225" height="225"/>
+        <image name="violenceoff" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Pcd-kp-464"/>
