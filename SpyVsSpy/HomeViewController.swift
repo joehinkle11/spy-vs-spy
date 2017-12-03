@@ -11,9 +11,11 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDataSource {
     
     //Variables
+    var players: [String: PlayerInGameModel] = [:]
     var locations: [String] = []
     var lbl_players: String = "Players in Game"
     var lbl_buildings: String = "Buildings to Hack"
+    var isPlayersToggeled = true
     
     //Control Variables
     @IBOutlet weak var lbl_data: UILabel!
@@ -29,7 +31,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         
         if segment_control.selectedSegmentIndex == 0
         {
-            tableView.isHidden = true
+//            tableView.isHidden = true
             lbl_data.text = lbl_players
         }
     }
@@ -41,12 +43,17 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         {
         case 0:
             print("Players Displayed")
-            tableView.isHidden = true
+//            tableView.isHidden = true
             lbl_data.text = lbl_players
+            self.isPlayersToggeled = true
+            loadTableData()
         case 1:
             print("Buildings Displayed")
-            tableView.isHidden = false
+//            tableView.isHidden = false
             lbl_data.text = lbl_buildings
+            self.isPlayersToggeled = false
+            loadTableData()
+            tableView.reloadData()
         default:
             break;
         }
@@ -56,16 +63,42 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     //Get number of rows in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("NUMBER CELLS: \(self.locations.count)")
-        return (self.locations.count)
+        if self.isPlayersToggeled == true {
+            return (self.players.count)
+        } else {
+            return (self.locations.count)
+        }
     }
     
     //Set what values are displayed in table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "LocTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? LocTableViewCell
-        let location = self.locations[indexPath.row]
-        print(location)
-        cell?.label_text.text = location
+        if self.isPlayersToggeled == true {
+//            let player = "HEY"
+//            print( self.players)
+            let player = Array(self.players)[indexPath.row].value
+//            print( player.playerName)
+            
+            let attributeString: NSMutableAttributedString
+            if (player.isDead) {
+                
+                attributeString =  NSMutableAttributedString(string: "\(player.playerName) (Lost)" )
+                attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, player.playerName.count))
+
+                
+//                cell?.label_text.font = [UIFont italicSystemFontOfSize:16.0f]
+            } else {
+                
+                attributeString =  NSMutableAttributedString(string: "\(player.playerName)" )
+            }
+            cell?.label_text.attributedText = attributeString
+        } else {
+            let location = self.locations[indexPath.row]
+            print(location)
+            cell?.label_text.text = location
+        }
+        
         return cell!
     }
     
@@ -77,10 +110,18 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     
     //Load data from BackendGameLogic
     func loadTableData() {
-        BackendGameLogic.listOfLocationsToHack { (result) in
-            self.locations = result
-            print("Locations: \(self.locations)");
-            self.tableView.reloadData()
+        if self.isPlayersToggeled == true {
+            BackendGameLogic.listOfPlayers { (result) in
+                self.players = result
+                print("players: \(self.players)");
+                self.tableView.reloadData()
+            }
+        } else {
+            BackendGameLogic.listOfLocationsToHack { (result) in
+                self.locations = result
+                print("Locations: \(self.locations)");
+                self.tableView.reloadData()
+            }
         }
     }
     
