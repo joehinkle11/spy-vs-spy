@@ -131,6 +131,13 @@ class ShotReviewViewController: UIViewController {
     func finishFire() {
         animationView.alpha = 0.0
         animationView.stopAnimating()
+        
+        let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
+        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        appDelegate.window?.rootViewController = initialViewController
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainGameTabBarVController") as! MainGameTabBarVController
+        initialViewController.present(mainViewController, animated: false, completion: nil)
     }
     
     var player: AVAudioPlayer?
