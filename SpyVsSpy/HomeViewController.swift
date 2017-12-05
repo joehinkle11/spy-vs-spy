@@ -71,7 +71,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UIApplication
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
         appDelegate.window?.rootViewController = initialViewController
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! ViewController
+        newViewController.gotoScreenNum = -2
         initialViewController.present(newViewController, animated: false, completion: nil)
         
     }

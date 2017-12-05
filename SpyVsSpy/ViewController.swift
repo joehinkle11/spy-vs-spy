@@ -38,14 +38,13 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        if (self.gotoScreenNum == -1) {
+        if(self.gotoScreenNum == -1) {
             timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
                 
                 if (self.gotoScreenNum == 0) {
                     
                     self.googleButton?.alpha = 1
                     self.label.alpha = 0
-                    
                 } else if (self.gotoScreenNum == 1) {
                     
                     let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
@@ -56,9 +55,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                     initialViewController.present(newViewController, animated: false, completion: nil)
                     self.label.alpha = 0
                     self.googleButton?.alpha = 0
-                    
                 } else if (self.gotoScreenNum == 2) {
-                    
                     let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
                     let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
                     appDelegate.window?.rootViewController = initialViewController
@@ -66,9 +63,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                     let mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainGameTabBarVController") as! MainGameTabBarVController
                     initialViewController.present(mainViewController, animated: false, completion: nil)
                     self.label.alpha = 0
-                    self.googleButton?.alpha = 0
-                    
-                } else {
                     self.googleButton?.alpha = 0
                 }
             }
@@ -84,19 +78,22 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     
     
     func goToNextScreenIfLoggedIn() {
+        print("gotoNextScreenIfLoggedIN")
         BackendGameLogic.getGameId(completion: { (result) in
-            print("result: \(result)")
+//            print("result: \(result)")
             if (result == BackendGameLogic.no_user) {
                 self.gotoScreenNum = 0
+                print("Show login button")
             } else {
                 if (result == BackendGameLogic.no_game) {
                     //                Show list of games
                     //(Get current controller)
+                    print("Show game list")
                     self.gotoScreenNum = 1
                 } else {
                     print("Show Currently played game")
                     self.gotoScreenNum = 2
-
+                    
                 }
             }
         })

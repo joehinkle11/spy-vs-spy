@@ -27,7 +27,8 @@ class ShotReviewViewController: UIViewController {
     @IBOutlet weak var fireStatusLabel: UILabel!
     
     // animation
-    private let animationDuration = 3.0
+//    private let animationDuration = 3.0
+    private let animationDuration = 7.2
     private var isLoading = true
     
     override func viewDidLoad() {
@@ -42,14 +43,22 @@ class ShotReviewViewController: UIViewController {
         
         // png sequence setup
         var imgListArray :[UIImage] = []
-        for num in 0...80
+//        for num in 0...80
+        for num in 0...230
         {
             
-            var strImageName : String = "mafia_000"
-            if (num < 10) {
-                strImageName.append("0" + String(num))
-            } else if (num > 58) {
-                strImageName = "mafia_00058"
+//            var strImageName : String = "mafia_000"
+//            if (num < 10) {
+//                strImageName.append("0" + String(num))
+//            } else if (num > 58) {
+//                strImageName = "mafia_00058"
+//            } else {
+//                strImageName.append(String(num))
+//            }
+            
+            var strImageName : String = "frame-"
+            if (num > 210) {
+                strImageName = "frame-210"
             } else {
                 strImageName.append(String(num))
             }
@@ -126,7 +135,8 @@ class ShotReviewViewController: UIViewController {
     
     var player: AVAudioPlayer?
     func setupAudio() {
-        guard let url = Bundle.main.url(forResource: "mafiasound", withExtension: "mp3") else { return }
+        guard let url = Bundle.main.url(forResource: "lightening", withExtension: "mp3") else { return }
+//        guard let url = Bundle.main.url(forResource: "mafiasound", withExtension: "mp3") else { return }
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
             try AVAudioSession.sharedInstance().setActive(true)
