@@ -6,9 +6,13 @@
 //  Copyright © 2017 Joseph Hinkle. All rights reserved.
 //
 
+import Firebase
+import FirebaseAuth
+import GoogleSignIn
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDataSource, UIApplicationDelegate {
+    
     
     //Variables
     var players: [String: PlayerInGameModel] = [:]
@@ -59,7 +63,20 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         }
     }
     
-
+    @IBAction func logoutButtonClicked(_ sender: Any) {
+        try! Auth.auth().signOut()
+        
+        
+        let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
+        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        appDelegate.window?.rootViewController = initialViewController
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        initialViewController.present(newViewController, animated: false, completion: nil)
+        
+    }
+    
+    
     //Get number of rows in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("NUMBER CELLS: \(self.locations.count)")

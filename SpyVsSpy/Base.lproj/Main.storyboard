@@ -576,7 +576,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Home" id="ioH-Vo-jAO">
-                                        <barButtonItem key="rightBarButtonItem" title="Settings" id="hwn-Cf-MLH"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Logout" id="hwn-Cf-MLH">
+                                            <connections>
+                                                <action selector="logoutButtonClicked:" destination="BJO-Ul-T0h" id="0nk-hj-HJ8"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

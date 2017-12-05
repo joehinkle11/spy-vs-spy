@@ -16,13 +16,20 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     
     var timer = Timer()
     var gotoScreenNum = -1
+    var googleButton:GIDSignInButton?
     
     @IBOutlet weak var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
+        // add google sign in button
+        googleButton = GIDSignInButton()
+        googleButton?.frame = CGRect(x: 16, y: self.view.frame.height*0.75, width: self.view.frame.width - 32, height: 50)
+        self.view.addSubview(googleButton!)
+        GIDSignIn.sharedInstance().uiDelegate = self
+        googleButton?.alpha = 0
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -36,11 +43,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                 
                 if (self.gotoScreenNum == 0) {
                     
-                    // add google sign in button
-                    let googleButton = GIDSignInButton()
-                    googleButton.frame = CGRect(x: 16, y: self.view.frame.height*0.75, width: self.view.frame.width - 32, height: 50)
-                    self.view.addSubview(googleButton)
-                    GIDSignIn.sharedInstance().uiDelegate = self
+                    self.googleButton?.alpha = 1
                     self.label.alpha = 0
                     
                 } else if (self.gotoScreenNum == 1) {
@@ -52,6 +55,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                     let newViewController = storyBoard.instantiateViewController(withIdentifier: "ViewGamesNavigationController") as! UINavigationController
                     initialViewController.present(newViewController, animated: false, completion: nil)
                     self.label.alpha = 0
+                    self.googleButton?.alpha = 0
                     
                 } else if (self.gotoScreenNum == 2) {
                     
@@ -62,7 +66,10 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                     let mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainGameTabBarVController") as! MainGameTabBarVController
                     initialViewController.present(mainViewController, animated: false, completion: nil)
                     self.label.alpha = 0
+                    self.googleButton?.alpha = 0
                     
+                } else {
+                    self.googleButton?.alpha = 0
                 }
             }
         }
