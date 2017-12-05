@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreLocation
+import AVFoundation
+import AudioToolbox
 
 class HackViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -24,7 +26,7 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
     var manager = CLLocationManager()
     
     //Set timer
-    var seconds = 20
+    var seconds = 11
     var time: Float = 0
     
     //Create timer
@@ -48,6 +50,9 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         
         //Hide image
         hack_img.isHidden = true
+        
+        // setup sound
+        setupAudio()
         
         //Draw circular button
         hackbtn.layer.cornerRadius = 0.5 * hackbtn.bounds.size.width
@@ -205,7 +210,8 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
         progressbar.isHidden = false
         hackcomplete.isHidden = true
         
-        print("Button clicked")
+        // play sound
+        playSound()
         
         //Decrement timer
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(HackViewController.updateTimer), userInfo: nil, repeats: true)
@@ -214,7 +220,7 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
     @objc func updateTimer(region: CLRegion)
     {
         //Time
-        time = time + 0.01667
+        time = time + 0.01667*5.454545454545455
         
         //Set progress
         progressbar.setProgress(Float(time), animated: true)
@@ -246,11 +252,26 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             //Reset timer value
-            seconds = 20
+            seconds = 11
             time = 0
             
             //Reset progress bar
             progressbar.setProgress(0.0, animated: true)
         }
+    }
+    var player: AVAudioPlayer?
+    func setupAudio() {
+        guard let url = Bundle.main.url(forResource: "hacksound", withExtension: "mp3") else { return }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setActive(true)
+            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    func playSound() {
+        guard let player = player else { return }
+        player.play()
     }
 }

@@ -110,6 +110,8 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         // audio setup
         setupAudio()
         setupAudio2()
+        setupAudio3()
+        setupAudio4()
         if (isMuted) {
             muteButton.setImage(UIImage(named:"ic_volume_off"), for: UIControlState.normal)
             soundLabel.text = "Sound Off"
@@ -124,12 +126,14 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
             animationView.animationImages = self.imgListArray
             animationView.animationDuration = animationDuration
             animationDurationSelected = animationDuration
+            updateBulletType()
         } else {
             violenceButton.setImage(UIImage(named:"violenceon"), for: UIControlState.normal)
             violenceLabel.text = "Violence On"
             animationView.animationImages = self.imgListArray2
             animationView.animationDuration = animationDuration2
             animationDurationSelected = animationDuration2
+            updateBulletType()
         }
     }
     
@@ -198,12 +202,14 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
             animationView.animationImages = self.imgListArray
             animationView.animationDuration = animationDuration
             animationDurationSelected = animationDuration
+            updateBulletType()
         } else {
             violenceButton.setImage(UIImage(named:"violenceon"), for: UIControlState.normal)
             violenceLabel.text = "Violence On"
             animationView.animationImages = self.imgListArray2
             animationView.animationDuration = animationDuration2
             animationDurationSelected = animationDuration2
+            updateBulletType()
         }
     }
     @IBAction func muteButtonClicked(_ sender: Any) {
@@ -276,7 +282,6 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
     //----------------//
     
     func updateAmmoDisplay() {
-        print(ammoAmount)
         if (ammoAmount > 2) {
             bulletView1.alpha = 1
             bulletView2.alpha = 1
@@ -326,6 +331,62 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
     func playSound2() {
         guard let player2 = player2 else { return }
         player2.play()
+    }
+    
+    func updateBulletType() {
+        var image : UIImage?
+        if (isNotViolent) {
+            image = UIImage(named:"electric")!
+            bulletView1.image = image
+            bulletView2.image = image
+            bulletView3.image = image
+            if (!isMuted) {
+                playSound3()
+            }
+        } else {
+            image = UIImage(named:"bulleticon")!
+            bulletView1.image = image
+            bulletView2.image = image
+            bulletView3.image = image
+            if (!isMuted) {
+                playSound4()
+            }
+        }
+    }
+    
+    
+    
+    var player3: AVAudioPlayer?
+    func setupAudio3() {
+        guard let url = Bundle.main.url(forResource: "shocksound", withExtension: "mp3") else { return }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setActive(true)
+            player3 = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    var player4: AVAudioPlayer?
+    func setupAudio4() {
+        guard let url = Bundle.main.url(forResource: "gunsound", withExtension: "wav") else { return }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setActive(true)
+            player4 = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    func playSound3() {
+        print("playSound3")
+        guard let player3 = player3 else { return }
+        player3.play()
+    }
+    func playSound4() {
+        print("playSound4")
+        guard let player4 = player4 else { return }
+        player4.play()
     }
     
 }
