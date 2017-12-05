@@ -22,6 +22,9 @@
 		9F26ACC31F716ED200327E45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F26ACC11F716ED200327E45 /* LaunchScreen.storyboard */; };
 		9F385C001F82B12300797DD2 /* SpecialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F385BFF1F82B12300797DD2 /* SpecialViewController.swift */; };
 		9F76EE191FD6E927006A9415 /* ProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76EE181FD6E927006A9415 /* ProfileDetailsViewController.swift */; };
+		9F76EE1C1FD6F707006A9415 /* gunsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F76EE1A1FD6F707006A9415 /* gunsound.wav */; };
+		9F76EE1D1FD6F707006A9415 /* shocksound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F76EE1B1FD6F707006A9415 /* shocksound.mp3 */; };
+		9F76EE1F1FD6FE0A006A9415 /* hacksound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F76EE1E1FD6FE0A006A9415 /* hacksound.mp3 */; };
 		9F7A357C1FB429B700502A2D /* ShotReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7A357B1FB429B700502A2D /* ShotReviewViewController.swift */; };
 		9F9B579E1FD65EC200B6BD31 /* lightening.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F9B579D1FD65EC200B6BD31 /* lightening.mp3 */; };
 		9FB129F81FB20C5300FE69AB /* SniperShotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB129F71FB20C5300FE69AB /* SniperShotViewController.swift */; };
@@ -66,6 +69,9 @@
 		9F26ACC41F716ED200327E45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F385BFF1F82B12300797DD2 /* SpecialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialViewController.swift; sourceTree = "<group>"; };
 		9F76EE181FD6E927006A9415 /* ProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewController.swift; sourceTree = "<group>"; };
+		9F76EE1A1FD6F707006A9415 /* gunsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunsound.wav; sourceTree = "<group>"; };
+		9F76EE1B1FD6F707006A9415 /* shocksound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shocksound.mp3; sourceTree = "<group>"; };
+		9F76EE1E1FD6FE0A006A9415 /* hacksound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hacksound.mp3; sourceTree = "<group>"; };
 		9F7A357B1FB429B700502A2D /* ShotReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotReviewViewController.swift; sourceTree = "<group>"; };
 		9F9B579D1FD65EC200B6BD31 /* lightening.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lightening.mp3; sourceTree = "<group>"; };
 		9FB129F71FB20C5300FE69AB /* SniperShotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SniperShotViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +164,9 @@
 				FACC137D1FA9127200824F30 /* LogTableViewCell.swift */,
 				FACC13841FA9270B00824F30 /* LogsViewController.swift */,
 				9F1DCB251FB3876A0014ADB5 /* mafiasound.mp3 */,
+				9F76EE1E1FD6FE0A006A9415 /* hacksound.mp3 */,
+				9F76EE1A1FD6F707006A9415 /* gunsound.wav */,
+				9F76EE1B1FD6F707006A9415 /* shocksound.mp3 */,
 				9F9B579D1FD65EC200B6BD31 /* lightening.mp3 */,
 				5F9CD0E31FC7D4BE0065759B /* LocTableViewCell.swift */,
 				FAA855D51FAAC662004C2F68 /* MainGameTabBarVController.swift */,
@@ -229,6 +238,10 @@
 		9F26ACAD1F716ED200327E45 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					gunsound,
+					shocksound,
+				);
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Joseph Hinkle";
@@ -272,9 +285,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F26ACC31F716ED200327E45 /* LaunchScreen.storyboard in Resources */,
+				9F76EE1C1FD6F707006A9415 /* gunsound.wav in Resources */,
+				9F76EE1F1FD6FE0A006A9415 /* hacksound.mp3 in Resources */,
 				FAC19F2D1F75F9DB007A8600 /* GoogleService-Info.plist in Resources */,
 				9F26ACC01F716ED200327E45 /* Assets.xcassets in Resources */,
 				9F26ACBE1F716ED200327E45 /* Main.storyboard in Resources */,
+				9F76EE1D1FD6F707006A9415 /* shocksound.mp3 in Resources */,
 				9F1DCB261FB3876A0014ADB5 /* mafiasound.mp3 in Resources */,
 				9F9B579E1FD65EC200B6BD31 /* lightening.mp3 in Resources */,
 			);
