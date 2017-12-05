@@ -25,6 +25,7 @@
 		9F76EE1C1FD6F707006A9415 /* gunsound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F76EE1A1FD6F707006A9415 /* gunsound.wav */; };
 		9F76EE1D1FD6F707006A9415 /* shocksound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F76EE1B1FD6F707006A9415 /* shocksound.mp3 */; };
 		9F76EE1F1FD6FE0A006A9415 /* hacksound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F76EE1E1FD6FE0A006A9415 /* hacksound.mp3 */; };
+		9F76EE211FD70037006A9415 /* SelectTaggedPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76EE201FD70037006A9415 /* SelectTaggedPlayerViewController.swift */; };
 		9F7A357C1FB429B700502A2D /* ShotReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7A357B1FB429B700502A2D /* ShotReviewViewController.swift */; };
 		9F9B579E1FD65EC200B6BD31 /* lightening.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F9B579D1FD65EC200B6BD31 /* lightening.mp3 */; };
 		9FB129F81FB20C5300FE69AB /* SniperShotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB129F71FB20C5300FE69AB /* SniperShotViewController.swift */; };
@@ -70,6 +71,7 @@
 		9F76EE1A1FD6F707006A9415 /* gunsound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gunsound.wav; sourceTree = "<group>"; };
 		9F76EE1B1FD6F707006A9415 /* shocksound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shocksound.mp3; sourceTree = "<group>"; };
 		9F76EE1E1FD6FE0A006A9415 /* hacksound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hacksound.mp3; sourceTree = "<group>"; };
+		9F76EE201FD70037006A9415 /* SelectTaggedPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTaggedPlayerViewController.swift; sourceTree = "<group>"; };
 		9F7A357B1FB429B700502A2D /* ShotReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShotReviewViewController.swift; sourceTree = "<group>"; };
 		9F9B579D1FD65EC200B6BD31 /* lightening.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lightening.mp3; sourceTree = "<group>"; };
 		9FB129F71FB20C5300FE69AB /* SniperShotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SniperShotViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				FAA855D31FAAB94A004C2F68 /* HomeViewController.swift */,
 				9F76EE181FD6E927006A9415 /* ProfileDetailsViewController.swift */,
 				9F26ACBC1F716ED200327E45 /* Main.storyboard */,
+				9F76EE201FD70037006A9415 /* SelectTaggedPlayerViewController.swift */,
 				5F5902DF1F8C4C8900CB9831 /* StarRatingControl.swift */,
 				5FE884AA1F8C3B0100A2569B /* HackViewController.swift */,
 				5F8C29761FA8DE9700C6D4EF /* Building.swift */,
@@ -373,6 +376,7 @@
 				5F5902E01F8C4C8900CB9831 /* StarRatingControl.swift in Sources */,
 				9FB129F81FB20C5300FE69AB /* SniperShotViewController.swift in Sources */,
 				FAA855D41FAAB94A004C2F68 /* HomeViewController.swift in Sources */,
+				9F76EE211FD70037006A9415 /* SelectTaggedPlayerViewController.swift in Sources */,
 				5F8C29771FA8DE9700C6D4EF /* Building.swift in Sources */,
 				FA7712EE1F8FDD4500571BE5 /* GameStartInfo.swift in Sources */,
 				5F5902E21F8C634B00CB9831 /* StarRatingViewer.swift in Sources */,

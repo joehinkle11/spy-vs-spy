@@ -522,7 +522,7 @@
                                 <rect key="frame" x="16" y="88" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bow-IE-aYJ">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bow-IE-aYJ">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kzP-KA-Pzx" customClass="StarRatingControl" customModule="SpyVsSpy" customModuleProvider="target">
@@ -540,7 +540,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Megan Reiffer, aka, Junito Rocket Racer Rebel &quot;Juni&quot; Cortez" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHB-3R-ynm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Megan Reiffer, aka, Junito Rocket Racer Rebel &quot;Juni&quot; Cortez" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHB-3R-ynm">
                                 <rect key="frame" x="204" y="88" width="100" height="185"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1025,6 +1025,89 @@
             </objects>
             <point key="canvasLocation" x="4196" y="-709"/>
         </scene>
+        <!--Select Tagged Player View Controller-->
+        <scene sceneID="C0s-hF-uiN">
+            <objects>
+                <viewController storyboardIdentifier="SelectTaggedPlayerViewController" id="jCS-by-6L9" customClass="SelectTaggedPlayerViewController" customModule="SpyVsSpy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GnX-kh-DoR"/>
+                        <viewControllerLayoutGuide type="bottom" id="ege-xU-D8l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TZS-xz-7GQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select which player you tagged:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YY-CD-o5K">
+                                <rect key="frame" x="38" y="28" width="244" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Z87-rt-tGe">
+                                <rect key="frame" x="0.0" y="65" width="320" height="503"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wfi-bv-a0D">
+                                    <size key="itemSize" width="91" height="86"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tAh-JS-pb6" id="GMl-R3-cBJ"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sl-pl-dCR">
+                                <rect key="frame" x="75" y="65" width="170" height="154"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="154" id="o0B-e4-OfN"/>
+                                </constraints>
+                                <state key="normal" title="Candace Allison" backgroundImage="spygirl"/>
+                                <connections>
+                                    <action selector="tagCandace:" destination="jCS-by-6L9" eventType="touchUpInside" id="bUU-gC-e4s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHs-Aq-ppn">
+                                <rect key="frame" x="75" y="227" width="170" height="154"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="154" id="cH0-yl-Xq1"/>
+                                </constraints>
+                                <state key="normal" title="Megan Reiffer" backgroundImage="spyguy"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUe-DL-HaU">
+                                <rect key="frame" x="132" y="389" width="57" height="30"/>
+                                <state key="normal" title="I missed"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z50-76-Bns">
+                                <rect key="frame" x="117" y="427" width="88" height="30"/>
+                                <state key="normal" title="Replay video"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eHs-Aq-ppn" firstAttribute="trailing" secondItem="5sl-pl-dCR" secondAttribute="trailing" id="4TQ-sc-8TK"/>
+                            <constraint firstItem="5sl-pl-dCR" firstAttribute="top" secondItem="Z87-rt-tGe" secondAttribute="top" id="80D-Ar-9p8"/>
+                            <constraint firstItem="Z87-rt-tGe" firstAttribute="centerX" secondItem="3YY-CD-o5K" secondAttribute="centerX" id="Bsj-aQ-9Ce"/>
+                            <constraint firstItem="Z87-rt-tGe" firstAttribute="bottom" secondItem="ege-xU-D8l" secondAttribute="top" id="Ffp-c1-mLT"/>
+                            <constraint firstItem="z50-76-Bns" firstAttribute="top" secondItem="jUe-DL-HaU" secondAttribute="bottom" constant="8" symbolic="YES" id="IrZ-Bd-ebH"/>
+                            <constraint firstItem="3YY-CD-o5K" firstAttribute="centerX" secondItem="TZS-xz-7GQ" secondAttribute="centerX" id="Jvf-z5-41v"/>
+                            <constraint firstItem="5sl-pl-dCR" firstAttribute="leading" secondItem="TZS-xz-7GQ" secondAttribute="leadingMargin" constant="59" id="LCw-xp-8Di"/>
+                            <constraint firstItem="5sl-pl-dCR" firstAttribute="centerX" secondItem="3YY-CD-o5K" secondAttribute="centerX" id="LKx-i8-Lyy"/>
+                            <constraint firstItem="Z87-rt-tGe" firstAttribute="top" secondItem="3YY-CD-o5K" secondAttribute="bottom" constant="16" id="RlD-BL-alE"/>
+                            <constraint firstItem="jUe-DL-HaU" firstAttribute="centerX" secondItem="z50-76-Bns" secondAttribute="centerX" id="hci-VW-uVB"/>
+                            <constraint firstItem="jUe-DL-HaU" firstAttribute="centerX" secondItem="eHs-Aq-ppn" secondAttribute="centerX" id="ou5-9b-cEc"/>
+                            <constraint firstItem="eHs-Aq-ppn" firstAttribute="top" secondItem="5sl-pl-dCR" secondAttribute="bottom" constant="8" symbolic="YES" id="pty-1m-GSv"/>
+                            <constraint firstItem="3YY-CD-o5K" firstAttribute="top" secondItem="GnX-kh-DoR" secondAttribute="bottom" constant="8" symbolic="YES" id="qTu-Lm-Uhf"/>
+                            <constraint firstItem="Z87-rt-tGe" firstAttribute="leading" secondItem="TZS-xz-7GQ" secondAttribute="leading" id="rhQ-7T-Ehg"/>
+                            <constraint firstItem="jUe-DL-HaU" firstAttribute="top" secondItem="eHs-Aq-ppn" secondAttribute="bottom" constant="8" symbolic="YES" id="upq-dZ-nkA"/>
+                            <constraint firstItem="eHs-Aq-ppn" firstAttribute="leading" secondItem="5sl-pl-dCR" secondAttribute="leading" id="wn6-Pg-PNu"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LqZ-hn-EBN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4725" y="-714"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="boz-jE-q2n">
             <objects>
@@ -1063,6 +1146,19 @@
             </objects>
             <point key="canvasLocation" x="2684" y="573"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="OF3-Vt-WsS">
+            <objects>
+                <viewController id="KnE-cn-QIo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yqQ-JI-0n6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRG-FR-hCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="apptitle" width="362" height="138"/>
@@ -1076,6 +1172,8 @@
         <image name="lazergun" width="200" height="200"/>
         <image name="mafia_00058" width="960" height="540"/>
         <image name="mask" width="225" height="225"/>
+        <image name="spygirl" width="640" height="613"/>
+        <image name="spyguy" width="320" height="213"/>
         <image name="violenceoff" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>

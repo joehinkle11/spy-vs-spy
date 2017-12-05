@@ -143,7 +143,7 @@ class ShotReviewViewController: UIViewController {
         let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
         appDelegate.window?.rootViewController = initialViewController
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainGameTabBarVController") as! MainGameTabBarVController
+        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "SelectTaggedPlayerViewController") as! SelectTaggedPlayerViewController
         initialViewController.present(mainViewController, animated: false, completion: nil)
     }
     
