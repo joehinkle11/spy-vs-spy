@@ -735,7 +735,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mafia_00027" translatesAutoresizingMaskIntoConstraints="NO" id="BUu-6c-sPQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frame-0" translatesAutoresizingMaskIntoConstraints="NO" id="BUu-6c-sPQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7r-i9-27P">
@@ -1042,6 +1042,7 @@
     </scenes>
     <resources>
         <image name="apptitle" width="362" height="138"/>
+        <image name="frame-0" width="320" height="180"/>
         <image name="ic_volume_up" width="24" height="24"/>
         <image name="icons8-Briefcase-25" width="25" height="25"/>
         <image name="icons8-Chat-25" width="25" height="25"/>
