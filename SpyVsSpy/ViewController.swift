@@ -25,40 +25,48 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
 
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.gotoScreenNum = -2
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { timer in
-            if (self.gotoScreenNum == 0) {
-                // add google sign in button
-                let googleButton = GIDSignInButton()
-                googleButton.frame = CGRect(x: 16, y: self.view.frame.height*0.75, width: self.view.frame.width - 32, height: 50)
-                self.view.addSubview(googleButton)
-                var isFirstLoggedInQuery = true
-                GIDSignIn.sharedInstance().uiDelegate = self
-                self.label.alpha = 0
-                timer.invalidate()
-            } else if (self.gotoScreenNum == 1) {
-                let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
-                let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-                appDelegate.window?.rootViewController = initialViewController
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "ViewGamesNavigationController") as! UINavigationController
-                initialViewController.present(newViewController, animated: false, completion: nil)
-                self.label.alpha = 0
-                timer.invalidate()
-            } else if (self.gotoScreenNum == 2) {
-                let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
-                let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-                appDelegate.window?.rootViewController = initialViewController
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainGameTabBarVController") as! MainGameTabBarVController
-                initialViewController.present(mainViewController, animated: false, completion: nil)
-                self.label.alpha = 0
-                timer.invalidate()
+        if (self.gotoScreenNum == -1) {
+            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+                
+                if (self.gotoScreenNum == 0) {
+                    
+                    // add google sign in button
+                    let googleButton = GIDSignInButton()
+                    googleButton.frame = CGRect(x: 16, y: self.view.frame.height*0.75, width: self.view.frame.width - 32, height: 50)
+                    self.view.addSubview(googleButton)
+                    GIDSignIn.sharedInstance().uiDelegate = self
+                    self.label.alpha = 0
+                    
+                } else if (self.gotoScreenNum == 1) {
+                    
+                    let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
+                    let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+                    appDelegate.window?.rootViewController = initialViewController
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "ViewGamesNavigationController") as! UINavigationController
+                    initialViewController.present(newViewController, animated: false, completion: nil)
+                    self.label.alpha = 0
+                    
+                } else if (self.gotoScreenNum == 2) {
+                    
+                    let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
+                    let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+                    appDelegate.window?.rootViewController = initialViewController
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainGameTabBarVController") as! MainGameTabBarVController
+                    initialViewController.present(mainViewController, animated: false, completion: nil)
+                    self.label.alpha = 0
+                    
+                }
             }
         }
-//        goToNextScreenIfLoggedIn()
+        goToNextScreenIfLoggedIn()
     }
 
     override func didReceiveMemoryWarning() {
