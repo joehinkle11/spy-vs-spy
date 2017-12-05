@@ -23,7 +23,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         
         // add google sign in button
         let googleButton = GIDSignInButton()
-        googleButton.frame = CGRect(x: 16, y: 116+66, width: view.frame.width - 32, height: 50)
+        googleButton.frame = CGRect(x: 16, y: view.frame.height*0.5+66, width: view.frame.width - 32, height: 50)
         view.addSubview(googleButton)
         var isFirstLoggedInQuery = true
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -55,7 +55,10 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
             } else {
                 if (!self.enrollButton.isEnabled) {
                     self.enrollButton.isEnabled = true
-                    
+                    //
+                    // TODO: disable this if you do not want auto log in
+                    goToNextScreenIfLoggedIn()
+                    //
                 } else {
                     if (result == BackendGameLogic.no_game) {
                         //                Show list of games
