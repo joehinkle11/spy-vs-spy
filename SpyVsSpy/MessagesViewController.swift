@@ -17,6 +17,10 @@ class MessagesViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        messages.append("Let's go to woodward to hack")
+        
+        messengerTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,6 +63,7 @@ class MessagesViewController: UIViewController, UITableViewDataSource {
             textboxField.text = ""
             messengerTableView.reloadData()
         }
+        view.endEditing(true)
     }
     
 }
