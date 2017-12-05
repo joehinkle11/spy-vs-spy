@@ -15,7 +15,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     var userReference: DatabaseReference? = nil
     
     var timer = Timer()
-    var gotoScreenNum = 0
+    var gotoScreenNum = -1
     
     @IBOutlet weak var label: UILabel!
     
@@ -37,6 +37,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                 var isFirstLoggedInQuery = true
                 GIDSignIn.sharedInstance().uiDelegate = self
                 self.label.alpha = 0
+                timer.invalidate()
             } else if (self.gotoScreenNum == 1) {
                 let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
                 let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
@@ -45,7 +46,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "ViewGamesNavigationController") as! UINavigationController
                 initialViewController.present(newViewController, animated: false, completion: nil)
                 self.label.alpha = 0
-            } else {
+                timer.invalidate()
+            } else if (self.gotoScreenNum == 2) {
                 let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
                 let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
                 appDelegate.window?.rootViewController = initialViewController
@@ -53,13 +55,9 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
                 let mainViewController = storyBoard.instantiateViewController(withIdentifier: "MainGameTabBarVController") as! MainGameTabBarVController
                 initialViewController.present(mainViewController, animated: false, completion: nil)
                 self.label.alpha = 0
+                timer.invalidate()
             }
-            timer.invalidate()
         }
-        
-        
-        
-        
 //        goToNextScreenIfLoggedIn()
     }
 

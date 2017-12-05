@@ -23,20 +23,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="UNCC Edition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdx-zS-FeS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNCC Edition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdx-zS-FeS">
                                 <rect key="frame" x="108" y="204" width="105" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="apptitle" translatesAutoresizingMaskIntoConstraints="NO" id="kQ5-2C-lbG">
-                                <rect key="frame" x="16" y="46" width="288" height="115"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apptitle" translatesAutoresizingMaskIntoConstraints="NO" id="kQ5-2C-lbG">
+                                <rect key="frame" x="0.0" y="46" width="320" height="115"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="ae9-FY-RXg"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading game..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OyN-9d-Jc0">
-                                <rect key="frame" x="118" y="391" width="84" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="sgW-eB-HF2"/>
-                                </constraints>
+                                <rect key="frame" x="118" y="274" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -44,10 +44,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zkF-24-Q3t" firstAttribute="top" secondItem="OyN-9d-Jc0" secondAttribute="bottom" constant="156" id="7Vn-bg-06F"/>
-                            <constraint firstItem="OyN-9d-Jc0" firstAttribute="centerX" secondItem="sdx-zS-FeS" secondAttribute="centerX" id="Ap9-bx-cB4"/>
-                            <constraint firstItem="OyN-9d-Jc0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dIV-Yb-ou1"/>
-                            <constraint firstItem="OyN-9d-Jc0" firstAttribute="centerX" secondItem="kQ5-2C-lbG" secondAttribute="centerX" id="ysx-sy-2rl"/>
+                            <constraint firstItem="OyN-9d-Jc0" firstAttribute="centerX" secondItem="kQ5-2C-lbG" secondAttribute="centerX" id="JBU-3S-foC"/>
+                            <constraint firstItem="kQ5-2C-lbG" firstAttribute="top" secondItem="q0S-WB-0aK" secondAttribute="bottom" constant="26" id="OHw-Zs-EOQ"/>
+                            <constraint firstItem="OyN-9d-Jc0" firstAttribute="top" secondItem="sdx-zS-FeS" secondAttribute="bottom" constant="49" id="Sst-ga-gk7"/>
+                            <constraint firstItem="OyN-9d-Jc0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="T3y-b5-n6y"/>
+                            <constraint firstItem="kQ5-2C-lbG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Wfc-Mg-0cv"/>
+                            <constraint firstItem="zkF-24-Q3t" firstAttribute="top" secondItem="OyN-9d-Jc0" secondAttribute="bottom" constant="273" id="bYY-Dm-j9g"/>
+                            <constraint firstItem="OyN-9d-Jc0" firstAttribute="centerX" secondItem="sdx-zS-FeS" secondAttribute="centerX" id="iPA-EW-PhI"/>
+                            <constraint firstItem="OyN-9d-Jc0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sMF-B8-GYc"/>
                         </constraints>
                     </view>
                     <connections>
