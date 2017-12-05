@@ -24,7 +24,7 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
     var manager = CLLocationManager()
     
     //Set timer
-    var seconds = 60
+    var seconds = 20
     var time: Float = 0
     
     //Create timer
@@ -246,7 +246,7 @@ class HackViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             //Reset timer value
-            seconds = 60
+            seconds = 20
             time = 0
             
             //Reset progress bar

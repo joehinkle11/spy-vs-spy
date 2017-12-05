@@ -39,9 +39,12 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
     @IBOutlet weak var violenceLabel: UILabel!
     
     // animation
-//    private let animationDuration = 3.0
+    private let animationDuration2 = 3.0
     private let animationDuration = 7.2
+    private var animationDurationSelected = 7.2
     private var isLoading = true
+    var imgListArray :[UIImage] = []
+    var imgListArray2 :[UIImage] = []
     
     // screen settings which ought to be set, though defaults are given
     var isMuted = false
@@ -75,20 +78,10 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         fireStatusLabel.text = "Tap screen to fire"
         
         // png sequence setup
-        var imgListArray :[UIImage] = []
-//        for num in 0...80
+        
+        //        for num in 0...80
         for num in 0...230
         {
-
-//            var strImageName : String = "mafia_000"
-//            if (num < 10) {
-//                strImageName.append("0" + String(num))
-//            } else if (num > 58) {
-//                strImageName = "mafia_00058"
-//            } else {
-//                strImageName.append(String(num))
-//            }
-            
             var strImageName : String = "frame-"
             if (num > 210) {
                 strImageName = "frame-210"
@@ -98,11 +91,25 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
             let image  = UIImage(named:strImageName)
             imgListArray.append(image!)
         }
-        animationView.animationImages = imgListArray
-        animationView.animationDuration = animationDuration
+        
+        // png sequence setup 2
+        for num in 0...80
+        {
+            var strImageName : String = "mafia_000"
+            if (num < 10) {
+                strImageName.append("0" + String(num))
+            } else if (num > 58) {
+                strImageName = "mafia_00058"
+            } else {
+                strImageName.append(String(num))
+            }
+            let image  = UIImage(named:strImageName)
+            imgListArray2.append(image!)
+        }
         
         // audio setup
         setupAudio()
+        setupAudio2()
         if (isMuted) {
             muteButton.setImage(UIImage(named:"ic_volume_off"), for: UIControlState.normal)
             soundLabel.text = "Sound Off"
@@ -114,9 +121,15 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         if (isNotViolent) {
             violenceButton.setImage(UIImage(named:"violenceoff"), for: UIControlState.normal)
             violenceLabel.text = "Violence Off"
+            animationView.animationImages = self.imgListArray
+            animationView.animationDuration = animationDuration
+            animationDurationSelected = animationDuration
         } else {
             violenceButton.setImage(UIImage(named:"violenceon"), for: UIControlState.normal)
             violenceLabel.text = "Violence On"
+            animationView.animationImages = self.imgListArray2
+            animationView.animationDuration = animationDuration2
+            animationDurationSelected = animationDuration2
         }
     }
     
@@ -150,7 +163,7 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
             self.loadingLabel.text = "Loading..."
         })
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration*0.9 + 1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDurationSelected*0.9 + 1, execute: {
             self.animationView.alpha = 0.0
             self.loadingLabel.text = ""
             self.isLoading = false
@@ -166,7 +179,13 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
             if (!shotTaken) {
                 fire()
                 if (!isMuted) {
-                    self.playSound()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05, execute: {
+                        if (self.isNotViolent) {
+                            self.playSound()
+                        } else {
+                            self.playSound2()
+                        }
+                    })
                 }
             }
         }
@@ -176,9 +195,15 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         if (isNotViolent) {
             violenceButton.setImage(UIImage(named:"violenceoff"), for: UIControlState.normal)
             violenceLabel.text = "Violence Off"
+            animationView.animationImages = self.imgListArray
+            animationView.animationDuration = animationDuration
+            animationDurationSelected = animationDuration
         } else {
             violenceButton.setImage(UIImage(named:"violenceon"), for: UIControlState.normal)
             violenceLabel.text = "Violence On"
+            animationView.animationImages = self.imgListArray2
+            animationView.animationDuration = animationDuration2
+            animationDurationSelected = animationDuration2
         }
     }
     @IBAction func muteButtonClicked(_ sender: Any) {
@@ -205,7 +230,7 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         
         startRecording()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration-0.1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDurationSelected-0.1, execute: {
             self.finishFire()
             self.stopRecording()
             self.fireStatusLabel.text = "Done! Loading review..."
@@ -241,6 +266,7 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "ShotReviewViewController") as! ShotReviewViewController
         newViewController.filePath = filePath
         newViewController.isMuted = isMuted
+        newViewController.isNotViolent = isNotViolent
         initialViewController.present(newViewController, animated: true, completion: nil)
         
         
@@ -273,7 +299,7 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
     var player: AVAudioPlayer?
     func setupAudio() {
         guard let url = Bundle.main.url(forResource: "lightening", withExtension: "mp3") else { return }
-//        guard let url = Bundle.main.url(forResource: "mafiasound", withExtension: "mp3") else { return }
+        //        guard let url = Bundle.main.url(forResource: "mafiasound", withExtension: "mp3") else { return }
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -282,9 +308,24 @@ class SniperShotViewController: UIViewController, AVCaptureFileOutputRecordingDe
             print(error.localizedDescription)
         }
     }
+    var player2: AVAudioPlayer?
+    func setupAudio2() {
+        guard let url = Bundle.main.url(forResource: "mafiasound", withExtension: "mp3") else { return }
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setActive(true)
+            player2 = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
     func playSound() {
         guard let player = player else { return }
         player.play()
+    }
+    func playSound2() {
+        guard let player2 = player2 else { return }
+        player2.play()
     }
     
 }

@@ -18,6 +18,7 @@ class ShotReviewViewController: UIViewController {
     
     // screen settings which ought to be set, though defaults are given
     var isMuted = false
+    var isNotViolent = true
     
     // for ui
     @IBOutlet weak var animationView: UIImageView!
@@ -27,8 +28,7 @@ class ShotReviewViewController: UIViewController {
     @IBOutlet weak var fireStatusLabel: UILabel!
     
     // animation
-//    private let animationDuration = 3.0
-    private let animationDuration = 7.2
+    private var animationDuration = 7.2
     private var isLoading = true
     
     override func viewDidLoad() {
@@ -43,28 +43,35 @@ class ShotReviewViewController: UIViewController {
         
         // png sequence setup
         var imgListArray :[UIImage] = []
-//        for num in 0...80
-        for num in 0...230
-        {
-            
-//            var strImageName : String = "mafia_000"
-//            if (num < 10) {
-//                strImageName.append("0" + String(num))
-//            } else if (num > 58) {
-//                strImageName = "mafia_00058"
-//            } else {
-//                strImageName.append(String(num))
-//            }
-            
-            var strImageName : String = "frame-"
-            if (num > 210) {
-                strImageName = "frame-210"
-            } else {
-                strImageName.append(String(num))
+        if (isNotViolent) {
+            for num in 0...230
+            {
+                var strImageName : String = "frame-"
+                if (num > 210) {
+                    strImageName = "frame-210"
+                } else {
+                    strImageName.append(String(num))
+                }
+                let image  = UIImage(named:strImageName)
+                imgListArray.append(image!)
             }
-            let image  = UIImage(named:strImageName)
-            imgListArray.append(image!)
+            animationDuration = 7.2
+        } else {
+            for num in 0...80 {
+                var strImageName : String = "mafia_000"
+                if (num < 10) {
+                    strImageName.append("0" + String(num))
+                } else if (num > 58) {
+                    strImageName = "mafia_00058"
+                } else {
+                    strImageName.append(String(num))
+                }
+                let image  = UIImage(named:strImageName)
+                imgListArray.append(image!)
+            }
+            animationDuration = 3.0
         }
+        
         animationView.animationImages = imgListArray
         animationView.animationDuration = animationDuration
         
@@ -140,14 +147,20 @@ class ShotReviewViewController: UIViewController {
         initialViewController.present(mainViewController, animated: false, completion: nil)
     }
     
+    
+    
     var player: AVAudioPlayer?
     func setupAudio() {
-        guard let url = Bundle.main.url(forResource: "lightening", withExtension: "mp3") else { return }
-//        guard let url = Bundle.main.url(forResource: "mafiasound", withExtension: "mp3") else { return }
+        var url:URL?
+        if (isNotViolent) {
+            url = Bundle.main.url(forResource: "lightening", withExtension: "mp3")
+        } else {
+            url = Bundle.main.url(forResource: "mafiasound", withExtension: "mp3")
+        }
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
             try AVAudioSession.sharedInstance().setActive(true)
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+            player = try AVAudioPlayer(contentsOf: url!, fileTypeHint: AVFileType.mp3.rawValue)
         } catch let error {
             print(error.localizedDescription)
         }
