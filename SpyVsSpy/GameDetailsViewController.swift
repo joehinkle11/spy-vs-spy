@@ -78,7 +78,16 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath) as? ProfileCollectionViewCell
         let player = self.playersList[indexPath.row]
         cell?.profileNameLabel?.text = player.playerName
-        var image : UIImage = UIImage(named:"apptitle")!
+        var image : UIImage?
+        if (player.playerName == "Megan Reiffer") {
+            image = UIImage(named:"spyguy")!
+        } else if (player.playerName == "Candace Allison") {
+            image = UIImage(named:"spygirl")!
+        } else {
+            image = UIImage(named:"apptitle")!
+        }
+        
+        
         if player.imageName != "" {
             let imageRef = Storage.storage().reference().child("images/users/\(player.imageName)")
 
@@ -93,6 +102,7 @@ class GameDetailsViewController: UIViewController, UICollectionViewDataSource {
                     image = UIImage(data: data as! Data)!
                 }
             })
+            
 //
 //            // Reference to an image file in Firebase Storage
 //            let reference = imageRef.child("images/\(player.imageName)")
