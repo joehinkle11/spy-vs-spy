@@ -10,11 +10,18 @@ import UIKit
 
 class MessagesViewController: UIViewController, UITableViewDataSource {
     
+    @IBOutlet weak var sendButtonBottomConstraint: NSLayoutConstraint!
     var messages:[String] = []
+    @IBOutlet weak var textfieldBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var messengerTableView: UITableView!
     @IBOutlet weak var textboxField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
+        //Listeners to move textbox (and send button) above/back down form keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         // Do any additional setup after loading the view.
         
@@ -23,6 +30,33 @@ class MessagesViewController: UIViewController, UITableViewDataSource {
         messengerTableView.reloadData()
     }
 
+    //    Move textbox above keyboard
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let info = notification.userInfo {
+            let rect: CGRect = info["UIKeyboardFrameEndUserInfoKey"] as! CGRect
+            self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.25, animations: {
+                self.view.layoutIfNeeded()
+                self.textfieldBottomConstraint.constant = rect.height
+                self.sendButtonBottomConstraint.constant = rect.height
+            })
+            
+        }
+    }
+    
+    //    Move textbox back down (prev. above keyboard)
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let info = notification.userInfo {
+            let rect: CGRect = info["UIKeyboardFrameEndUserInfoKey"] as! CGRect
+            self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.25, animations: {
+                self.view.layoutIfNeeded()
+                self.textfieldBottomConstraint.constant = 8
+                self.sendButtonBottomConstraint.constant = 8
+            })
+            
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

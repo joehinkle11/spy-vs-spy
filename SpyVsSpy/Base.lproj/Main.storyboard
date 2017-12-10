@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -424,24 +424,24 @@
                                     <navigationItem title="Messages" id="9q4-RH-ipu"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGf-PD-l7i">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGf-PD-l7i">
                                 <rect key="frame" x="268" y="481" width="36" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send"/>
                                 <connections>
                                     <action selector="sendButtonClicked:" destination="0BW-8G-VZJ" eventType="touchUpInside" id="14m-wC-uAg"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="El4-1g-cTV">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="El4-1g-cTV">
                                 <rect key="frame" x="16" y="481" width="244" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="244" id="uuc-Rm-2zf"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="send"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-Im-XU5">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-Im-XU5">
                                 <rect key="frame" x="16" y="64" width="288" height="409"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MessageTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Xst-t4-Jkx" customClass="MessageTableViewCell" customModule="SpyVsSpy" customModuleProvider="target">
@@ -451,21 +451,29 @@
                                             <rect key="frame" x="0.0" y="0.0" width="288" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Joseph Hinkle:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpt-T2-epo">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Joseph Hinkle:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpt-T2-epo">
                                                     <rect key="frame" x="15" y="12" width="113" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="113" id="J91-vJ-FaL"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.45544495558375631" green="0.45544495558375631" blue="0.45544495558375631" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Some text message..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7a-H3-U7e">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Some text message..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7a-H3-U7e">
                                                     <rect key="frame" x="131" y="12" width="157" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xpt-T2-epo" firstAttribute="bottom" secondItem="Oik-9d-qQu" secondAttribute="bottomMargin" id="7MW-4m-4V9"/>
+                                                <constraint firstItem="xpt-T2-epo" firstAttribute="leading" secondItem="Oik-9d-qQu" secondAttribute="leadingMargin" constant="-1" id="bsM-dG-wVi"/>
+                                                <constraint firstAttribute="trailing" secondItem="m7a-H3-U7e" secondAttribute="trailing" id="kwu-yy-t5T"/>
+                                                <constraint firstItem="xpt-T2-epo" firstAttribute="baseline" secondItem="m7a-H3-U7e" secondAttribute="baseline" id="uas-9w-GT5"/>
+                                                <constraint firstItem="m7a-H3-U7e" firstAttribute="leading" secondItem="xpt-T2-epo" secondAttribute="trailing" constant="3" id="v7W-jJ-6qG"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="xpt-T2-epo" id="rvd-rS-Kj7"/>
@@ -479,11 +487,23 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="El4-1g-cTV" firstAttribute="top" secondItem="qjg-Im-XU5" secondAttribute="bottom" constant="8" id="AdK-9J-qCF"/>
+                            <constraint firstItem="El4-1g-cTV" firstAttribute="leading" secondItem="qjg-Im-XU5" secondAttribute="leading" id="NZm-4S-8vu"/>
+                            <constraint firstItem="SGf-PD-l7i" firstAttribute="trailing" secondItem="Zdg-Op-JN6" secondAttribute="trailingMargin" id="RKn-Pl-Nul"/>
+                            <constraint firstItem="El4-1g-cTV" firstAttribute="top" secondItem="qjg-Im-XU5" secondAttribute="bottom" constant="8" symbolic="YES" id="Sa3-fU-lR1"/>
+                            <constraint firstItem="rvG-3O-Nh7" firstAttribute="top" secondItem="SGf-PD-l7i" secondAttribute="bottom" constant="8" id="XHL-M1-cZt"/>
+                            <constraint firstItem="El4-1g-cTV" firstAttribute="leading" secondItem="Zdg-Op-JN6" secondAttribute="leadingMargin" id="cqK-T6-hH3"/>
+                            <constraint firstItem="SGf-PD-l7i" firstAttribute="leading" secondItem="El4-1g-cTV" secondAttribute="trailing" constant="8" id="ofm-gW-esq"/>
+                            <constraint firstItem="rvG-3O-Nh7" firstAttribute="top" secondItem="El4-1g-cTV" secondAttribute="bottom" constant="8" id="rjx-xR-TUh"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Messages" image="icons8-Chat-25" id="dPy-pz-4tA"/>
                     <connections>
                         <outlet property="messengerTableView" destination="qjg-Im-XU5" id="akk-4m-Nps"/>
+                        <outlet property="sendButtonBottomConstraint" destination="XHL-M1-cZt" id="ckI-iu-xkb"/>
                         <outlet property="textboxField" destination="El4-1g-cTV" id="eMg-J0-3El"/>
+                        <outlet property="textfieldBottomConstraint" destination="rjx-xR-TUh" id="xLL-Zi-QBL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hrg-sg-xkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
