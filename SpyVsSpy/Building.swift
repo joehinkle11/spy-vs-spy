@@ -64,6 +64,16 @@ class building
         
         //Print message to console
         print("Created COED")
+        
+        /*Cone Center*/
+        //Lucas Room
+        let cone_center = CLLocationCoordinate2DMake(35.305522265876924, -80.733386697322814)
+        let cone_region = CLCircularRegion(center: cone_center, radius: 100, identifier: "Cone")
+        
+        //Append to array
+        buildings.append(cone_region)
+        
+        print("Created Cone Center")
 
         /*APARTMENT*/ //Testing purposes only
         let apartment_center = CLLocationCoordinate2DMake(34.874541107597643, -80.382753498927116)
